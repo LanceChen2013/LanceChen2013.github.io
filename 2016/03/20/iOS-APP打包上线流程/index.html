@@ -1,0 +1,528 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>iOS-APP打包上线流程 | 街角的守望</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="艳遇哥">
+    
+
+    
+    <meta name="description" content="##1 上传至apple developer
+####1.1 上传准备工作
+更新上架和发布上架不同，在原始版本首次上架的时候就将描述文件和证书之类的文档下载好了，所以无需再安装此类文件。 在测试人员确认可以上架以后，首先需要在 Build Settings/Code Signing中将之前真机调试用的developer调试证书换成distribution发布证书，然后在product/scheme">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS-APP打包上线流程">
+<meta property="og:url" content="https://LanceChen2013.github.io/2016/03/20/iOS-APP打包上线流程/index.html">
+<meta property="og:site_name" content="街角的守望">
+<meta property="og:description" content="##1 上传至apple developer
+####1.1 上传准备工作
+更新上架和发布上架不同，在原始版本首次上架的时候就将描述文件和证书之类的文档下载好了，所以无需再安装此类文件。 在测试人员确认可以上架以后，首先需要在 Build Settings/Code Signing中将之前真机调试用的developer调试证书换成distribution发布证书，然后在product/scheme">
+<meta property="og:image" content="http://img.blog.csdn.net/20160625142943135">
+<meta property="og:image" content="http://img.blog.csdn.net/20160625143009941">
+<meta property="og:image" content="http://img.blog.csdn.net/20160625143027894">
+<meta property="og:image" content="http://img.blog.csdn.net/20160625143048074">
+<meta property="og:image" content="http://img.blog.csdn.net/20160625143153613">
+<meta property="og:image" content="http://img.blog.csdn.net/20160625143245390">
+<meta property="og:image" content="http://img.blog.csdn.net/20160625143305922">
+<meta property="og:image" content="http://img.blog.csdn.net/20160625143322567">
+<meta property="og:image" content="http://img.blog.csdn.net/20160625143429787">
+<meta property="og:image" content="http://img.blog.csdn.net/20160625143450022">
+<meta property="og:image" content="http://img.blog.csdn.net/20160625143504783">
+<meta property="og:image" content="http://img.blog.csdn.net/20160625143518709">
+<meta property="og:image" content="http://img.blog.csdn.net/20160625143601007">
+<meta property="og:image" content="http://img.blog.csdn.net/20160625143622460">
+<meta property="og:image" content="http://img.blog.csdn.net/20160625143637788">
+<meta property="og:image" content="http://img.blog.csdn.net/20160625143720679">
+<meta property="og:image" content="http://img.blog.csdn.net/20160625143736942">
+<meta property="og:image" content="http://img.blog.csdn.net/20160625143902772">
+<meta property="og:image" content="http://img.blog.csdn.net/20160625143917179">
+<meta property="og:image" content="http://img.blog.csdn.net/20160625143931758">
+<meta property="og:image" content="http://img.blog.csdn.net/20160625144030977">
+<meta property="og:image" content="http://img.blog.csdn.net/20160625144102790">
+<meta property="og:image" content="http://img.blog.csdn.net/20160625144251652">
+<meta property="og:image" content="http://img.blog.csdn.net/20160625144311369">
+<meta property="og:image" content="http://img.blog.csdn.net/20160625144334838">
+<meta property="og:image" content="http://img.blog.csdn.net/20160625144356572">
+<meta property="og:image" content="http://img.blog.csdn.net/20160625144417198">
+<meta property="og:image" content="http://img.blog.csdn.net/20160625144435310">
+<meta property="og:image" content="http://img.blog.csdn.net/20160625144452061">
+<meta property="og:image" content="http://img.blog.csdn.net/20160625144508764">
+<meta property="og:image" content="http://img.blog.csdn.net/20160625144524905">
+<meta property="og:image" content="http://img.blog.csdn.net/20160625144540328">
+<meta property="og:image" content="http://img.blog.csdn.net/20160625144600058">
+<meta property="og:image" content="http://img.blog.csdn.net/20160625144619626">
+<meta property="og:image" content="http://img.blog.csdn.net/20160625144653798">
+<meta property="og:image" content="http://img.blog.csdn.net/20160625144714408">
+<meta property="og:image" content="http://img.blog.csdn.net/20160625144729777">
+<meta property="og:image" content="http://img.blog.csdn.net/20160625144747831">
+<meta property="og:image" content="http://img.blog.csdn.net/20160625144804956">
+<meta property="og:updated_time" content="2016-06-25T14:25:02.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS-APP打包上线流程">
+<meta name="twitter:description" content="##1 上传至apple developer
+####1.1 上传准备工作
+更新上架和发布上架不同，在原始版本首次上架的时候就将描述文件和证书之类的文档下载好了，所以无需再安装此类文件。 在测试人员确认可以上架以后，首先需要在 Build Settings/Code Signing中将之前真机调试用的developer调试证书换成distribution发布证书，然后在product/scheme">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20160625142943135">
+
+    
+    <link rel="alternative" href="/atom.xml" title="街角的守望" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="街角的守望" title="街角的守望"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="街角的守望">街角的守望</a></h1>
+				<h2 class="blog-motto">人生就像是一场旅行，不必在乎目的地，重要的是沿途的风景以及看风景的&gt;心情！既然选择了远方，便只顾风雨兼程!</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:LanceChen2013.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/03/20/iOS-APP打包上线流程/" title="iOS-APP打包上线流程" itemprop="url">iOS-APP打包上线流程</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="艳遇哥" target="_blank" itemprop="author">艳遇哥</a>
+		
+  <p class="article-time">
+    <time datetime="2016-03-20T14:20:07.000Z" itemprop="datePublished"> 发表于 2016-03-20</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			
+		
+		</div>
+		
+		<p>##1 上传至apple developer</p>
+<p>####1.1 上传准备工作</p>
+<p>更新上架和发布上架不同，在原始版本首次上架的时候就将描述文件和证书之类的文档下载好了，所以无需再安装此类文件。 在测试人员确认可以上架以后，首先需要在 Build Settings/Code Signing中将之前真机调试用的developer调试证书换成distribution发布证书，然后在product/scheme/eidt scheme/run中build configuration 的debug改成release，close以后command+b 编译一下，编译成功以后准备上传至apple developer 1.2 上传版本<br>点击product/archive存档，存档需要一点时间，成功后选中最新的版本包点击update to AppStore，然后选择公司的AppleID最后直接upload，开始上传至apple developer 上传需要需要一点时间一般情况下不超过5分钟，上传成功会有提示，最后done就上传OK。 2 提交以供审核<br>来到apple developer官网，选中account/iTunes connect/go to iTunes connect 通过公司账号登录后选中“我的App”，进入构建新版本界面。 点击添加“版本或平台”，在这里面需要构建新版中的所有信息，需要填写的部分有“此版本的新功能”，“App预览和屏幕快照”，“描述”，“关键词”，“技术支持网址(URL)”，“构建版本”（最新上传的版本），“App图标”，“版权”，“商务代表联系信息”，“联系信息”，“审核账户”，选择发布版本方式，完成上述内容以后点击“存储”，最后点击“提交以供审核”，在提交的过程中会弹出来几个问题，根据事实来选择“是”，“否”即可，最近版本就会出现“正在等待审核”的字样状态，说明提交成功。 版本更新审核周期大概需要7个工作日，当审核通过后会显示“可供销售”的字样，表示可以在AppStore中下载此版本了。 如果在审核的过程中发现了正在等待审核的版本存在bug的情况下，可以将bug修改完成后，按照上述过程提交以后，点击“remove this version from review”的字样，将此版本移除，移除后提交新版本，新版本的版本号必须是新的版本号，再次提交。 如果审核没有通过的情况下，苹果公司会将还需要解决的问题通过一个英文邮件的形式发送过来，百度翻译一下解决问题后，再次提交，这种情况下一般只需要一个工作日就可以再次得到审核信息，直至审核通过。 前言：作为一名iOS开发者，把开发出来的App上传到App Store是必须的。下面就来详细介绍下具体流程。</p>
+<p>1.打开苹果开发者中心：<a href="https://developer.apple.com打开后点击：Member" target="_blank" rel="external">https://developer.apple.com打开后点击：Member</a> Center 如果你的电脑没有保存密码，则会提示你输入开发者帐号和密码，因为我的电脑已经保存了，所以直接进入。<br><img src="http://img.blog.csdn.net/20160625142943135" alt="这里写图片描述"></p>
+<p>2.点击：Certificates, Identifiers &amp; Profiles<br><img src="http://img.blog.csdn.net/20160625143009941" alt="这里写图片描述"></p>
+<p>3.点击Devices<br><img src="http://img.blog.csdn.net/20160625143027894" alt="这里写图片描述"></p>
+<p>##一.创建App IDs和Boudle ID<br>4.点击App IDs，会进入如下界面，点击右上角的 + 号<br><img src="http://img.blog.csdn.net/20160625143048074" alt="这里写图片描述"></p>
+<p>5.填写App IDs和Boudle ID<br><img src="http://img.blog.csdn.net/20160625143153613" alt="这里写图片描述"><br>6.点击continue<br><img src="http://img.blog.csdn.net/20160625143245390" alt="这里写图片描述"></p>
+<p>7.点击Submit<br><img src="http://img.blog.csdn.net/20160625143305922" alt="这里写图片描述"></p>
+<p>8.点击Done<br><img src="http://img.blog.csdn.net/20160625143322567" alt="这里写图片描述"></p>
+<p>##二.创建发布证书（若已创建过发布证书，现在用的是p12文件，可直接跳到第21步）<br>9.点击Production后，点击 +<br><img src="http://img.blog.csdn.net/20160625143429787" alt="这里写图片描述"></p>
+<p>10.点击App Store and Ad Hoc<br><img src="http://img.blog.csdn.net/20160625143450022" alt="这里写图片描述"></p>
+<p>11.点击Continue<br><img src="http://img.blog.csdn.net/20160625143504783" alt="这里写图片描述"></p>
+<p>12.点击Continue<br><img src="http://img.blog.csdn.net/20160625143518709" alt="这里写图片描述"></p>
+<p>##三、创建本地证书<br>13.此时返回到桌面，在点开LaunchPad，在其他中找到钥匙串访问，切记不要关闭浏览器<br><img src="http://img.blog.csdn.net/20160625143601007" alt="这里写图片描述"></p>
+<p>14.打开钥匙串访问，点击电脑左上角的钥匙串访问–证书助理–从证书颁发机构请求证书<br><img src="http://img.blog.csdn.net/20160625143622460" alt="这里写图片描述"></p>
+<p>15.会出现如下界面，选择存储到磁盘，点击继续<br><img src="http://img.blog.csdn.net/20160625143637788" alt="这里写图片描述"></p>
+<p>16.选择存储到桌面，存储<br><img src="http://img.blog.csdn.net/20160625143720679" alt="这里写图片描述"></p>
+<p>17.点击完成<br><img src="http://img.blog.csdn.net/20160625143736942" alt="这里写图片描述"></p>
+<p>18.你会在桌面上看到下面的文件<br><img src="http://img.blog.csdn.net/20160625143902772" alt="这里写图片描述"><br>19.然后回到浏览器，点击choose File.. 选择创建好的：CertificateSigningRequest.certSigningRequest 文件，点击Generate<br><img src="http://img.blog.csdn.net/20160625143917179" alt="这里写图片描述"></p>
+<p>20.点击Download下载创建好的发布证书（cer后缀的文件），然后点击Done，你创建的发布证书就会存储在帐号中。<br><img src="http://img.blog.csdn.net/20160625143931758" alt="这里写图片描述"></p>
+<p><code>注：一般一个开发者帐号创建一个发布证书就够了，如果以后需要在其他电脑上上架App，只需要在钥匙串访问中创建p12文件，把p12文件安装到其他电脑上。这相当于给予了其他电脑发布App的权限。 创建PP文件</code></p>
+<p>21.找到Provisioning Profiles ，点击All，然后点击右上角 + 号<br><img src="http://img.blog.csdn.net/20160625144030977" alt="这里写图片描述"></p>
+<p>22.选择App Store，点击Continue<br><img src="http://img.blog.csdn.net/20160625144102790" alt="这里写图片描述"></p>
+<p>23.在App ID 这个选项栏里面找到你刚刚创建的：App IDs（Bundle ID） 类型的套装，点击Continue<br><img src="http://img.blog.csdn.net/20160625144251652" alt="这里写图片描述"></p>
+<p>24.选择你刚创建的发布证书（或者生成p12文件的那个发布证书），点击Continue<br><img src="http://img.blog.csdn.net/20160625144311369" alt="这里写图片描述"></p>
+<p>25.在Profile Name栏里输入一个名字（这个是PP文件的名字，可随便输入，在这里我用工程名字，便于分别），然后点击Generate<br><img src="http://img.blog.csdn.net/20160625144334838" alt="这里写图片描述"></p>
+<p>26.Download生成的PP文件，然后点击Done<br><img src="http://img.blog.csdn.net/20160625144356572" alt="这里写图片描述"></p>
+<p>##四、在App Store开辟空间<br>27.回到Member Center，点击iTunes Connect<br><img src="http://img.blog.csdn.net/20160625144417198" alt="这里写图片描述"></p>
+<p>28.点击我的App<br><img src="http://img.blog.csdn.net/20160625144435310" alt="这里写图片描述"></p>
+<p>29.点击新建 iOSApp<br><img src="http://img.blog.csdn.net/20160625144452061" alt="这里写图片描述"></p>
+<p>30.依次按提示填入对应信息，然后点击创建<br><img src="http://img.blog.csdn.net/20160625144508764" alt="这里写图片描述"></p>
+<p>31.依次把不同尺寸的App截图拉入到对应的里面<br><img src="http://img.blog.csdn.net/20160625144524905" alt="这里写图片描述"></p>
+<p>32.填入App简介<br><img src="http://img.blog.csdn.net/20160625144540328" alt="这里写图片描述"></p>
+<p>33.按提示依次输入<br><img src="http://img.blog.csdn.net/20160625144600058" alt="这里写图片描述"></p>
+<p>34.此时这个构建版本还没有生成，我们先把基本信息填写完毕，然后再进入Xcode中把项目打包发送到过来。 注意：填写完一定要点击右上角的保存。<br><img src="http://img.blog.csdn.net/20160625144619626" alt="这里写图片描述"></p>
+<p>##五、在Xcode中打包工程<br>找到你刚刚下载的发布证书（后缀为.cer）或者p12文件，和PP文件，双击，看起来没反应，但是他们已经加入到你的钥匙串中。<br>35.在Xcode中选择模拟器为iOS Device，按照下图提示操作<br><img src="http://img.blog.csdn.net/20160625144653798" alt="这里写图片描述"><br><img src="http://img.blog.csdn.net/20160625144714408" alt="这里写图片描述"><br><img src="http://img.blog.csdn.net/20160625144729777" alt="这里写图片描述"></p>
+<p>36.修改.plist文件，两个.plist文件都要修改<br><img src="http://img.blog.csdn.net/20160625144747831" alt="这里写图片描述"></p>
+<p>37.然后发送到我的App<br><img src="http://img.blog.csdn.net/20160625144804956" alt="这里写图片描述"></p>
+<p>38.发送成功后返回到我的App，刷新页面，在构建版本处就会有个 + 号，点击 + 号把发送过来的程序添加上去就行了<br>39.然后在定价处设置你的App上架后是免费还是收费。<br>40.回到我的App，点击发布就ok了。</p>
+<p>转载：<a href="http://blog.cocoachina.com/article/17839" target="_blank" rel="external">http://blog.cocoachina.com/article/17839</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://LanceChen2013.github.io/2016/03/20/iOS-APP打包上线流程/" data-title="iOS-APP打包上线流程 | 街角的守望" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2016/03/23/iOS面试题/" title="iOS面试题">
+  <strong>上一篇：</strong><br/>
+  <span>
+  iOS面试题</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2016/01/04/键值观察KVO详解/"  title="键值观察KVO详解">
+ <strong>下一篇：</strong><br/> 
+ <span>键值观察KVO详解
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ 
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+
+  
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Larry Page in Google. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="艳遇哥">艳遇哥</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

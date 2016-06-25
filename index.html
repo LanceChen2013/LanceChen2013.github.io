@@ -81,62 +81,147 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/06/25/iOS—APP打包上线流程/" title="" itemprop="url"></a>
+      <a href="/2016/04/21/MVC与MVVM设计模式理解/" title="MVC与MVVM设计模式理解" itemprop="url">MVC与MVVM设计模式理解</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="艳遇哥" target="_blank" itemprop="author">艳遇哥</a>
 		
   <p class="article-time">
-    <time datetime="2016-06-25T13:51:20.000Z" itemprop="datePublished"> 发表于 2016-06-25</time>
+    <time datetime="2016-04-21T14:21:49.000Z" itemprop="datePublished"> 发表于 2016-04-21</time>
     
   </p>
 </header>
     <div class="article-content">
         
-        <hr>
-<p>title: iOS—APP打包上线流程<br>date: 2016-01-04 16:09:07</p>
-<h2 id="tags"><a href="#tags" class="headerlink" title="tags:"></a>tags:</h2><p>##1 上传至apple developer</p>
-<p>####1.1 上传准备工作</p>
-<p>更新上架和发布上架不同，在原始版本首次上架的时候就将描述文件和证书之类的文档下载好了，所以无需再安装此类文件。 在测试人员确认可以上架以后，首先需要在 Build Settings/Code Signing中将之前真机调试用的developer调试证书换成distribution发布证书，然后在product/scheme/eidt scheme/run中build configuration 的debug改成release，close以后command+b 编译一下，编译成功以后准备上传至apple developer 1.2 上传版本<br>点击product/archive存档，存档需要一点时间，成功后选中最新的版本包点击update to AppStore，然后选择公司的AppleID最后直接upload，开始上传至apple developer 上传需要需要一点时间一般情况下不超过5分钟，上传成功会有提示，最后done就上传OK。 2 提交以供审核<br>来到apple developer官网，选中account/iTunes connect/go to iTunes connect 通过公司账号登录后选中“我的App”，进入构建新版本界面。 点击添加“版本或平台”，在这里面需要构建新版中的所有信息，需要填写的部分有“此版本的新功能”，“App预览和屏幕快照”，“描述”，“关键词”，“技术支持网址(URL)”，“构建版本”（最新上传的版本），“App图标”，“版权”，“商务代表联系信息”，“联系信息”，“审核账户”，选择发布版本方式，完成上述内容以后点击“存储”，最后点击“提交以供审核”，在提交的过程中会弹出来几个问题，根据事实来选择“是”，“否”即可，最近版本就会出现“正在等待审核”的字样状态，说明提交成功。 版本更新审核周期大概需要7个工作日，当审核通过后会显示“可供销售”的字样，表示可以在AppStore中下载此版本了。 如果在审核的过程中发现了正在等待审核的版本存在bug的情况下，可以将bug修改完成后，按照上述过程提交以后，点击“remove this version from review”的字样，将此版本移除，移除后提交新版本，新版本的版本号必须是新的版本号，再次提交。 如果审核没有通过的情况下，苹果公司会将还需要解决的问题通过一个英文邮件的形式发送过来，百度翻译一下解决问题后，再次提交，这种情况下一般只需要一个工作日就可以再次得到审核信息，直至审核通过。 前言：作为一名iOS开发者，把开发出来的App上传到App Store是必须的。下面就来详细介绍下具体流程。</p>
-<p>1.打开苹果开发者中心：<a href="https://developer.apple.com打开后点击：Member" target="_blank" rel="external">https://developer.apple.com打开后点击：Member</a> Center 如果你的电脑没有保存密码，则会提示你输入开发者帐号和密码，因为我的电脑已经保存了，所以直接进入。<br><img src="http://img.blog.csdn.net/20160625142943135" alt="这里写图片描述"></p>
-<p>2.点击：Certificates, Identifiers &amp; Profiles<br><img src="http://img.blog.csdn.net/20160625143009941" alt="这里写图片描述"></p>
-<p>3.点击Devices<br><img src="http://img.blog.csdn.net/20160625143027894" alt="这里写图片描述"></p>
-<p>##一.创建App IDs和Boudle ID<br>4.点击App IDs，会进入如下界面，点击右上角的 + 号<br><img src="http://img.blog.csdn.net/20160625143048074" alt="这里写图片描述"></p>
-<p>5.填写App IDs和Boudle ID<br><img src="http://img.blog.csdn.net/20160625143153613" alt="这里写图片描述"><br>6.点击continue<br><img src="http://img.blog.csdn.net/20160625143245390" alt="这里写图片描述"></p>
-<p>7.点击Submit<br><img src="http://img.blog.csdn.net/20160625143305922" alt="这里写图片描述"></p>
-<p>8.点击Done<br><img src="http://img.blog.csdn.net/20160625143322567" alt="这里写图片描述"></p>
-<p>##二.创建发布证书（若已创建过发布证书，现在用的是p12文件，可直接跳到第21步）<br>9.点击Production后，点击 +<br><img src="http://img.blog.csdn.net/20160625143429787" alt="这里写图片描述"></p>
-<p>10.点击App Store and Ad Hoc<br><img src="http://img.blog.csdn.net/20160625143450022" alt="这里写图片描述"></p>
-<p>11.点击Continue<br><img src="http://img.blog.csdn.net/20160625143504783" alt="这里写图片描述"></p>
-<p>12.点击Continue<br><img src="http://img.blog.csdn.net/20160625143518709" alt="这里写图片描述"></p>
-<p>##三、创建本地证书<br>13.此时返回到桌面，在点开LaunchPad，在其他中找到钥匙串访问，切记不要关闭浏览器<br><img src="http://img.blog.csdn.net/20160625143601007" alt="这里写图片描述"></p>
-<p>14.打开钥匙串访问，点击电脑左上角的钥匙串访问–证书助理–从证书颁发机构请求证书<br><img src="http://img.blog.csdn.net/20160625143622460" alt="这里写图片描述"></p>
-<p>15.会出现如下界面，选择存储到磁盘，点击继续<br><img src="http://img.blog.csdn.net/20160625143637788" alt="这里写图片描述"></p>
-<p>16.选择存储到桌面，存储<br><img src="http://img.blog.csdn.net/20160625143720679" alt="这里写图片描述"></p>
-<p>17.点击完成<br><img src="http://img.blog.csdn.net/20160625143736942" alt="这里写图片描述"></p>
-<p>18.你会在桌面上看到下面的文件<br><img src="http://img.blog.csdn.net/20160625143902772" alt="这里写图片描述"><br>19.然后回到浏览器，点击choose File.. 选择创建好的：CertificateSigningRequest.certSigningRequest 文件，点击Generate<br><img src="http://img.blog.csdn.net/20160625143917179" alt="这里写图片描述"></p>
-<p>20.点击Download下载创建好的发布证书（cer后缀的文件），然后点击Done，你创建的发布证书就会存储在帐号中。<br><img src="http://img.blog.csdn.net/20160625143931758" alt="这里写图片描述"></p>
-<p><code>注：一般一个开发者帐号创建一个发布证书就够了，如果以后需要在其他电脑上上架App，只需要在钥匙串访问中创建p12文件，把p12文件安装到其他电脑上。这相当于给予了其他电脑发布App的权限。 创建PP文件</code></p>
-<p>21.找到Provisioning Profiles ，点击All，然后点击右上角 + 号<br><img src="http://img.blog.csdn.net/20160625144030977" alt="这里写图片描述"></p>
-<p>22.选择App Store，点击Continue<br><img src="http://img.blog.csdn.net/20160625144102790" alt="这里写图片描述"></p>
-<p>23.在App ID 这个选项栏里面找到你刚刚创建的：App IDs（Bundle ID） 类型的套装，点击Continue<br><img src="http://img.blog.csdn.net/20160625144251652" alt="这里写图片描述"></p>
-<p>24.选择你刚创建的发布证书（或者生成p12文件的那个发布证书），点击Continue<br><img src="http://img.blog.csdn.net/20160625144311369" alt="这里写图片描述"></p>
-<p>25.在Profile Name栏里输入一个名字（这个是PP文件的名字，可随便输入，在这里我用工程名字，便于分别），然后点击Generate<br><img src="http://img.blog.csdn.net/20160625144334838" alt="这里写图片描述"></p>
-<p>26.Download生成的PP文件，然后点击Done<br><img src="http://img.blog.csdn.net/20160625144356572" alt="这里写图片描述"></p>
-<p>##四、在App Store开辟空间<br>27.回到Member Center，点击iTunes Connect<br><img src="http://img.blog.csdn.net/20160625144417198" alt="这里写图片描述"></p>
-<p>28.点击我的App<br><img src="http://img.blog.csdn.net/20160625144435310" alt="这里写图片描述"></p>
-<p>29.点击新建 iOSApp<br><img src="http://img.blog.csdn.net/20160625144452061" alt="这里写图片描述"></p>
-<p>30.依次按提示填入对应信息，然后点击创建<br><img src="http://img.blog.csdn.net/20160625144508764" alt="这里写图片描述"></p>
-<p>31.依次把不同尺寸的App截图拉入到对应的里面<br><img src="http://img.blog.csdn.net/20160625144524905" alt="这里写图片描述"></p>
-<p>32.填入App简介<br><img src="http://img.blog.csdn.net/20160625144540328" alt="这里写图片描述"></p>
-<p>33.按提示依次输入<br><img src="http://img.blog.csdn.net/20160625144600058" alt="这里写图片描述"></p>
-<p>34.此时这个构建版本还没有生成，我们先把基本信息填写完毕，然后再进入Xcode中把项目打包发送到过来。 注意：填写完一定要点击右上角的保存。<br><img src="http://img.blog.csdn.net/20160625144619626" alt="这里写图片描述"></p>
-<p>##五、在Xcode中打包工程<br>找到你刚刚下载的发布证书（后缀为.cer）或者p12文件，和PP文件，双击，看起来没反应，但是他们已经加入到你的钥匙串中。<br>35.在Xcode中选择模拟器为iOS Device，按照下图提示操作<br><img src="http://img.blog.csdn.net/20160625144653798" alt="这里写图片描述"><br><img src="http://img.blog.csdn.net/20160625144714408" alt="这里写图片描述"><br><img src="http://img.blog.csdn.net/20160625144729777" alt="这里写图片描述"></p>
-<p>36.修改.plist文件，两个.plist文件都要修改<br><img src="http://img.blog.csdn.net/20160625144747831" alt="这里写图片描述"></p>
-<p>37.然后发送到我的App<br><img src="http://img.blog.csdn.net/20160625144804956" alt="这里写图片描述"></p>
-<p>38.发送成功后返回到我的App，刷新页面，在构建版本处就会有个 + 号，点击 + 号把发送过来的程序添加上去就行了<br>39.然后在定价处设置你的App上架后是免费还是收费。<br>40.回到我的App，点击发布就ok了。</p>
-<p>转载：<a href="http://blog.cocoachina.com/article/17839" target="_blank" rel="external">http://blog.cocoachina.com/article/17839</a></p>
+        <p>##MVC设计模式<br>MVC是一种架构模式，M表示Model，V表示视图View，C表示控制器Controller：</p>
+<ul>
+<li>Model负责存储、定义、操作数据；</li>
+<li>View用来展示给用户，并且和用户进行交互；</li>
+<li>Controller是Model和View的协调者，Controller把Model中的数据拿过来给View使用。Controller可以直接与Model和View进行通信，而View不能与Controller直接通信。，当有数据更新时，Model也要与Controller进行通信，这个时候就要用Notification和KVO，这个方式就像发广播一样，Model发信号，Controller设置接收监听信号，当有数据更新是就发信号给Controller，Model和View不能直接通信，这样违背MVC设计原则。View与Controller通信需要利用代理协议的方式，Controller可以直接根据Model决定View的展示。View如果接受响应事件则通过delegate，target-action，block等方式告诉Controller的状态变化。Controller进行业务的处理，然后再控制View的展示。</li>
+</ul>
+<p>那这样Model和View就是相互独立的。View只负责页面的展示，Model只是数据的存储，那么也就达到了解耦和重用的目的。<br>    实例：假设苹果根据买iPhone的人给予不同的优惠，学生优惠20%，it民工优惠50%，其他不优惠。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">//客户类</span><br><span class="line"></span><br><span class="line">typedef NS_ENUM(NSInteger, CustomerType) &#123;</span><br><span class="line">    CustomerTypeStudent,</span><br><span class="line">    CustomerTypeiT,</span><br><span class="line">    CustomerTypeOther,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">@interface Customer : NSObject</span><br><span class="line"></span><br><span class="line">@property (nonatomic, assign) CustomerType customerType;</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">//iPhone类</span><br><span class="line"></span><br><span class="line">@interface iPhone : NSObject</span><br><span class="line"></span><br><span class="line">@property (nonatomic, strong) NSString *name;</span><br><span class="line">@property (nonatomic, strong) NSString *price;</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">//VC类</span><br><span class="line"></span><br><span class="line">@interface ViewController ()</span><br><span class="line"></span><br><span class="line">@property (nonatomic, strong) iPhone *iphone;</span><br><span class="line">@property (nonatomic, strong) Customer *customer;</span><br><span class="line"></span><br><span class="line">@property (weak, nonatomic) IBOutlet UILabel *lblName;</span><br><span class="line">@property (weak, nonatomic) IBOutlet UILabel *lblPrice;</span><br><span class="line">@property (weak, nonatomic) IBOutlet UILabel *lblDiscount;</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation ViewController</span><br><span class="line"></span><br><span class="line">- (void)viewDidLoad &#123;</span><br><span class="line">    [super viewDidLoad];</span><br><span class="line"></span><br><span class="line">    self.title = @&quot;手机优惠&quot;;</span><br><span class="line"></span><br><span class="line">    self.lblName.text = self.iphone.name;</span><br><span class="line">    self.lblPrice.text = self.iphone.price;</span><br><span class="line"></span><br><span class="line">    if (self.customer.customerType == CustomerTypeStudent) &#123;</span><br><span class="line">        self.lblDiscount.text = @&quot;优惠20%&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    else if (self.customer.customerType == CustomerTypeiT) &#123;</span><br><span class="line">        self.lblDiscount.text = @&quot;优惠50%&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        self.lblDiscount.text = @&quot;没有优惠&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+<p>##MVVM设计模式<br>MVVM就是帮忙分担一下controller里面的部分业务逻辑。<br><img src="http://img.blog.csdn.net/20160624224107972" alt="这里写图片描述"><br>这个时候，controller将不再直接和真实的model进行绑定了，而通过ViewModel,viewModel进而持有真实的Model。<br>实例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line">//新建一个viewModel</span><br><span class="line">//.h文件</span><br><span class="line"></span><br><span class="line">@interface viewModel : NSObject</span><br><span class="line"></span><br><span class="line">@property (nonatomic, strong) NSString *name;</span><br><span class="line">@property (nonatomic, strong) NSString *price;</span><br><span class="line">@property (nonatomic, strong) NSString *discount;</span><br><span class="line"></span><br><span class="line">- (id)initWithCustomer:(Customer *)customer iphone:(iPhone *)iphone;</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">//.m文件</span><br><span class="line"></span><br><span class="line">@interface viewModel ()</span><br><span class="line"></span><br><span class="line">@property (nonatomic, strong) iPhone *iphone;</span><br><span class="line">@property (nonatomic, strong) Customer *customer;</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation viewModel</span><br><span class="line"></span><br><span class="line">- (id)initWithCustomer:(Customer *)customer iphone:(iPhone *)iphone</span><br><span class="line">&#123;</span><br><span class="line">    if (self = [super init]) &#123;</span><br><span class="line">        _customer = customer;</span><br><span class="line">        _iphone = iphone;</span><br><span class="line">        [self bindData];</span><br><span class="line">    &#125;</span><br><span class="line">    return self;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)bindData</span><br><span class="line">&#123;</span><br><span class="line">    self.name = _iphone.name;</span><br><span class="line">    self.price = _iphone.price;</span><br><span class="line"></span><br><span class="line">    if (self.customer.customerType == CustomerTypeStudent) &#123;</span><br><span class="line">        self.discount = @&quot;优惠20%&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    else if (self.customer.customerType == CustomerTypeiT) &#123;</span><br><span class="line">        self.discount = @&quot;优惠50%&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        self.discount = @&quot;没有优惠&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">//VC</span><br><span class="line"></span><br><span class="line">@interface ViewController ()</span><br><span class="line"></span><br><span class="line">@property (nonatomic, strong) viewModel *viewModel;</span><br><span class="line"></span><br><span class="line">@property (weak, nonatomic) IBOutlet UILabel *lblName;</span><br><span class="line">@property (weak, nonatomic) IBOutlet UILabel *lblPrice;</span><br><span class="line">@property (weak, nonatomic) IBOutlet UILabel *lblDiscount;</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation ViewController</span><br><span class="line"></span><br><span class="line">- (void)viewDidLoad &#123;</span><br><span class="line">    [super viewDidLoad];</span><br><span class="line">    // Do any additional setup after loading the view, typically from a nib.</span><br><span class="line">    self.title = @&quot;手机优惠&quot;;</span><br><span class="line"></span><br><span class="line">    self.lblName.text = self.viewModel.name;</span><br><span class="line">    self.lblPrice.text = self.viewModel.price;</span><br><span class="line">    self.lblDiscount.text = self.viewModel.discount;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)didReceiveMemoryWarning &#123;</span><br><span class="line">    [super didReceiveMemoryWarning];</span><br><span class="line">    // Dispose of any resources that can be recreated.</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+<p>看到修改完的代码，你会发现VC里面已经省去了不少的代码。一切都和viewModel进行交流。这里我只是展示一个最简单的数据展示，如果有其他响应事件，是需要viewModel开放方法来进行处理的，并要通知VC处理结果的。</p>
+<p>##关于MVVM的优点：</p>
+<ul>
+<li>方便测试</li>
+</ul>
+<p>在MVC下，Controller基本是无法测试的，里面混杂了个各种逻辑，而且分散在不同的地方。有了MVVM我们就可以测试里面的viewModel，来验证我们的处理结果对不对（Xcode7的测试已经越来越完善了）。</p>
+<ul>
+<li>便于代码的移植</li>
+</ul>
+<p>比如iOS里面有iPhone版本和iPad版本，除了交互展示不一样外，业务逻辑的model是一致的。这样，我们就可以以很小的代价去开发另一个app。</p>
+<ul>
+<li>兼容MVC</li>
+</ul>
+<p>MVVM是MVC的一个升级版，目前的MVC也可以很快的转换到MVVM这个模式。VC可以省去一大部分展示逻辑。</p>
+<p>  注册  登录<br> 添加关注 100 作者  JamesYu 2015.09.12 17:07<br>写了24936字，被424人关注，获得了343个喜欢<br>谈谈MVC和MVVM<br>字数2050 阅读1659 评论2 喜欢27<br>工作到现在，对代码稍微有点认识，if else 会写那么点。今天就和大家谈谈所理解的MVC，以及现在比较流行的MVVM。首先我们应该明白，计算机实现一个功能核心代码就那么点。也许我们经常会听到对于同一个问题，菜鸟的实现的真的就是几行，可是大牛却多出了很多文件。这个是为什么？因为大牛的“经验”比较多。。。这里面最主要的目的就是为了维护和可扩展。在设计模式里面，如果你能遵循单一原则，你的代码就已经很好了。</p>
+<p>MVC<br>做iOS开发，一直被教导一定要按MVC模式开发。可是MVC到底是神马？至少在我工作初也不懂是咋回事！如果网上一搜就是千篇一律的M是数据模型,V是视图，C是控制器。然后巴拉巴拉的讲他们之间是怎么通信的。然并无卵用！iOS的MVC展现形式还是有点特殊的，特别是controller和view紧密在一起，controller还必须负责view的展示。在服务器端，view根据model直接生成HTML，然后直接扔给浏览器去渲染和展示，通过Ajax或者js post告诉服务器controller view的响应事件，controller真的做的只是业务数据的处理，出来的结果其实还是数据，根本没有去做UI相关的事情。也可以说服务器根本就没有view。。但它有个浏览器，帮他管理着view和controller之间的交互。而在我们iOS中，controller可不仅仅只是处理数据了，还负责view的管理以及事件的传递。 MVC本质就是将数据展示和数据进行进行隔离，提高代码的复用性和扩展性。好吧，我也说点并无什么卵用的。</p>
+<p>看看斯坦福老爷爷的一张图：</p>
+<p>这就是我们所认识的MVC。我们可以看到，Controller可以和Model通信，也可以和View进行通信。继续看Controller和Model的关系，绿色的箭头代表Controller可以直接进行对Model进行访问，也就是说Model对于Controller来说就是透明的。但是Model并不知道Controller是谁。如果Model发生了变化，那么就通过Notification和KVO的方式传递给Controller。同样的Controller和View之间也是这种关系，View对Controller来说就是 透明的。Controller可以直接根据Model决定View的展示。View如果接受响应事件则通过delegate，target-action，block等方式告诉Controller的状态变化。Controller进行业务的处理，然后再控制View的展示。</p>
+<p>到这里你会发现Model和View并不能直接的进行通信，都必须通过Controller。那这样Model和View就是相互独立的。View只负责页面的展示，Model只是数据的存储，那么也就达到了解耦和重用的目的。</p>
+<p>说这么多不如几行代码来的实在。我们以一个简单的例子来看下：</p>
+<p>我们假设苹果根据买iPhone的人给予不同的优惠，学生优惠20%，it民工优惠50%，其他不优惠。</p>
+<p>//客户类</p>
+<p>typedef NS_ENUM(NSInteger, CustomerType) {<br>    CustomerTypeStudent,<br>    CustomerTypeiT,<br>    CustomerTypeOther,<br>};</p>
+<p>@interface Customer : NSObject</p>
+<p>@property (nonatomic, assign) CustomerType customerType;</p>
+<p>@end</p>
+<p>//iPhone类</p>
+<p>@interface iPhone : NSObject</p>
+<p>@property (nonatomic, strong) NSString <em>name;<br>@property (nonatomic, strong) NSString </em>price;</p>
+<p>@end</p>
+<p>//VC类</p>
+<p>@interface ViewController ()</p>
+<p>@property (nonatomic, strong) iPhone <em>iphone;<br>@property (nonatomic, strong) Customer </em>customer;</p>
+<p>@property (weak, nonatomic) IBOutlet UILabel <em>lblName;<br>@property (weak, nonatomic) IBOutlet UILabel </em>lblPrice;<br>@property (weak, nonatomic) IBOutlet UILabel *lblDiscount;</p>
+<p>@end</p>
+<p>@implementation ViewController</p>
+<ul>
+<li><p>(void)viewDidLoad {<br>  [super viewDidLoad];</p>
+<p>  self.title = @”手机优惠”;</p>
+<p>  self.lblName.text = self.iphone.name;<br>  self.lblPrice.text = self.iphone.price;</p>
+<p>  if (self.customer.customerType == CustomerTypeStudent) {</p>
+<pre><code>self.lblDiscount.text = @&quot;优惠20%&quot;;
+</code></pre><p>  }<br>  else if (self.customer.customerType == CustomerTypeiT) {</p>
+<pre><code>self.lblDiscount.text = @&quot;优惠50%&quot;;
+</code></pre><p>  }<br>  else {</p>
+<pre><code>self.lblDiscount.text = @&quot;没有优惠&quot;;
+</code></pre><p>  }<br>}</p>
+</li>
+</ul>
+<p>@end<br>这个就是我们最正常的开发，我们的逻辑都是在vc里面写的。这样写有木有错呢？一点没错，controller本来就是用来处理业务的。由于这个例子比较简单，只是做了个优惠判断，所以我们看不出有啥坏处。有点开发经验的都知道，如果业务复杂起来，再加上其他乱七八糟的验证，controller就会变得很大，越来越难以维护。这个也是MVC比较明显的缺点。</p>
+<p>MVVM<br>既然controller越来越臃肿，越来越难以维护，我们怎么去优化和瘦身呢？回头再仔细看看我们所谓的业务逻辑，是干什么的？无非就是根据几个数据得出一个数据用来控制view的显示。比如展示的是什么文案，按钮能不能响应，页面能不能跳转等等。那MVVM就干了这件事，帮忙分担一下controller里面的部分业务逻辑。MVVM更合理的应该叫做MV-CM。</p>
+<p>这个时候，controller将不再直接和真实的model进行绑定了，而通过ViewModel,viewModel进行持有真实的Model。</p>
+<p>我们来看看刚刚那例子怎么修改：</p>
+<p>//新建一个viewModel<br>//.h文件</p>
+<p>@interface viewModel : NSObject</p>
+<p>@property (nonatomic, strong) NSString <em>name;<br>@property (nonatomic, strong) NSString </em>price;<br>@property (nonatomic, strong) NSString *discount;</p>
+<ul>
+<li>(id)initWithCustomer:(Customer <em>)customer iphone:(iPhone </em>)iphone;</li>
+</ul>
+<p>@end</p>
+<p>//.m文件</p>
+<p>@interface viewModel ()</p>
+<p>@property (nonatomic, strong) iPhone <em>iphone;<br>@property (nonatomic, strong) Customer </em>customer;</p>
+<p>@end</p>
+<p>@implementation viewModel</p>
+<ul>
+<li><p>(id)initWithCustomer:(Customer <em>)customer iphone:(iPhone </em>)iphone<br>{<br>  if (self = [super init]) {</p>
+<pre><code>_customer = customer;
+_iphone = iphone;
+[self bindData];
+</code></pre><p>  }<br>  return self;<br>}</p>
+</li>
+<li><p>(void)bindData<br>{<br>  self.name = _iphone.name;<br>  self.price = _iphone.price;</p>
+<p>  if (self.customer.customerType == CustomerTypeStudent) {</p>
+<pre><code>self.discount = @&quot;优惠20%&quot;;
+</code></pre><p>  }<br>  else if (self.customer.customerType == CustomerTypeiT) {</p>
+<pre><code>self.discount = @&quot;优惠50%&quot;;
+</code></pre><p>  }<br>  else {</p>
+<pre><code>self.discount = @&quot;没有优惠&quot;;
+</code></pre><p>  }<br>}</p>
+</li>
+</ul>
+<p>@end</p>
+<p>//VC</p>
+<p>@interface ViewController ()</p>
+<p>@property (nonatomic, strong) viewModel *viewModel;</p>
+<p>@property (weak, nonatomic) IBOutlet UILabel <em>lblName;<br>@property (weak, nonatomic) IBOutlet UILabel </em>lblPrice;<br>@property (weak, nonatomic) IBOutlet UILabel *lblDiscount;</p>
+<p>@end</p>
+<p>@implementation ViewController</p>
+<ul>
+<li><p>(void)viewDidLoad {<br>  [super viewDidLoad];<br>  // Do any additional setup after loading the view, typically from a nib.<br>  self.title = @”手机优惠”;</p>
+<p>  self.lblName.text = self.viewModel.name;<br>  self.lblPrice.text = self.viewModel.price;<br>  self.lblDiscount.text = self.viewModel.discount;</p>
+</li>
+</ul>
+<p>}</p>
+<ul>
+<li>(void)didReceiveMemoryWarning {<br>  [super didReceiveMemoryWarning];<br>  // Dispose of any resources that can be recreated.<br>}</li>
+</ul>
+<p>@end<br>看到修改完的代码，你会发现VC里面已经省去了不少的代码。一切都和viewModel进行交流。这里我只是展示一个最简单的数据展示，如果有其他响应事件，是需要viewModel开放方法来进行处理的，并要通知VC处理结果的。</p>
+<p>关于MVVM的优点：<br>方便测试</p>
+<p>在MVC下，Controller基本是无法测试的，里面混杂了个各种逻辑，而且分散在不同的地方。有了MVVM我们就可以测试里面的viewModel，来验证我们的处理结果对不对（Xcode7的测试已经越来越完善了）。</p>
+<p>便于代码的移植</p>
+<p>比如iOS里面有iPhone版本和iPad版本，除了交互展示不一样外，业务逻辑的model是一致的。这样，我们就可以以很小的代价去开发另一个app。（以前做公司iPad的时候就深深感觉到，全部在VC里面是多么的痛苦和重新开发一个没有啥区别）。</p>
+<p>兼容MVC</p>
+<p>MVVM是MVC的一个升级版，目前的MVC也可以很快的转换到MVVM这个模式。VC可以省去一大部分展示逻辑。</p>
+<p>##缺点：</p>
+<ul>
+<li>类会增多</li>
+</ul>
+<p>每个VC都附带一个viewModel，类的数量*2</p>
+<ul>
+<li>viewModel会越来越庞大</li>
+</ul>
+<p>我们把逻辑给了viewModel，那势必Model也会变得很复杂，里面的属性和方法越来越多。可能重写的方法比较多，因为涉及到一些数据的转换以及和controller之间的通信。</p>
+<ul>
+<li>调用复杂度增加</li>
+</ul>
+<p>由于数据都是从viewModel来，想想突然来了一个新人，一看代码，不知道真实的模型是谁。比如常用tableview的数据源，一般都是一个数组，如果不断的通过viewModel去取，沟通上没有那么直接。况且每封一层，意味着要写很多代码去融合他们的转换。</p>
 
         
         
@@ -341,147 +426,60 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/01/04/MVC与MVVM设计模式理解/" title="MVC与MVVM设计模式理解" itemprop="url">MVC与MVVM设计模式理解</a>
+      <a href="/2016/03/20/iOS-APP打包上线流程/" title="iOS-APP打包上线流程" itemprop="url">iOS-APP打包上线流程</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="艳遇哥" target="_blank" itemprop="author">艳遇哥</a>
 		
   <p class="article-time">
-    <time datetime="2016-01-04T08:09:07.000Z" itemprop="datePublished"> 发表于 2016-01-04</time>
+    <time datetime="2016-03-20T14:20:07.000Z" itemprop="datePublished"> 发表于 2016-03-20</time>
     
   </p>
 </header>
     <div class="article-content">
         
-        <p>##MVC设计模式<br>MVC是一种架构模式，M表示Model，V表示视图View，C表示控制器Controller：</p>
-<ul>
-<li>Model负责存储、定义、操作数据；</li>
-<li>View用来展示给用户，并且和用户进行交互；</li>
-<li>Controller是Model和View的协调者，Controller把Model中的数据拿过来给View使用。Controller可以直接与Model和View进行通信，而View不能与Controller直接通信。，当有数据更新时，Model也要与Controller进行通信，这个时候就要用Notification和KVO，这个方式就像发广播一样，Model发信号，Controller设置接收监听信号，当有数据更新是就发信号给Controller，Model和View不能直接通信，这样违背MVC设计原则。View与Controller通信需要利用代理协议的方式，Controller可以直接根据Model决定View的展示。View如果接受响应事件则通过delegate，target-action，block等方式告诉Controller的状态变化。Controller进行业务的处理，然后再控制View的展示。</li>
-</ul>
-<p>那这样Model和View就是相互独立的。View只负责页面的展示，Model只是数据的存储，那么也就达到了解耦和重用的目的。<br>    实例：假设苹果根据买iPhone的人给予不同的优惠，学生优惠20%，it民工优惠50%，其他不优惠。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">//客户类</span><br><span class="line"></span><br><span class="line">typedef NS_ENUM(NSInteger, CustomerType) &#123;</span><br><span class="line">    CustomerTypeStudent,</span><br><span class="line">    CustomerTypeiT,</span><br><span class="line">    CustomerTypeOther,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">@interface Customer : NSObject</span><br><span class="line"></span><br><span class="line">@property (nonatomic, assign) CustomerType customerType;</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">//iPhone类</span><br><span class="line"></span><br><span class="line">@interface iPhone : NSObject</span><br><span class="line"></span><br><span class="line">@property (nonatomic, strong) NSString *name;</span><br><span class="line">@property (nonatomic, strong) NSString *price;</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">//VC类</span><br><span class="line"></span><br><span class="line">@interface ViewController ()</span><br><span class="line"></span><br><span class="line">@property (nonatomic, strong) iPhone *iphone;</span><br><span class="line">@property (nonatomic, strong) Customer *customer;</span><br><span class="line"></span><br><span class="line">@property (weak, nonatomic) IBOutlet UILabel *lblName;</span><br><span class="line">@property (weak, nonatomic) IBOutlet UILabel *lblPrice;</span><br><span class="line">@property (weak, nonatomic) IBOutlet UILabel *lblDiscount;</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation ViewController</span><br><span class="line"></span><br><span class="line">- (void)viewDidLoad &#123;</span><br><span class="line">    [super viewDidLoad];</span><br><span class="line"></span><br><span class="line">    self.title = @&quot;手机优惠&quot;;</span><br><span class="line"></span><br><span class="line">    self.lblName.text = self.iphone.name;</span><br><span class="line">    self.lblPrice.text = self.iphone.price;</span><br><span class="line"></span><br><span class="line">    if (self.customer.customerType == CustomerTypeStudent) &#123;</span><br><span class="line">        self.lblDiscount.text = @&quot;优惠20%&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    else if (self.customer.customerType == CustomerTypeiT) &#123;</span><br><span class="line">        self.lblDiscount.text = @&quot;优惠50%&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        self.lblDiscount.text = @&quot;没有优惠&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
-<p>##MVVM设计模式<br>MVVM就是帮忙分担一下controller里面的部分业务逻辑。<br><img src="http://img.blog.csdn.net/20160624224107972" alt="这里写图片描述"><br>这个时候，controller将不再直接和真实的model进行绑定了，而通过ViewModel,viewModel进而持有真实的Model。<br>实例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line">//新建一个viewModel</span><br><span class="line">//.h文件</span><br><span class="line"></span><br><span class="line">@interface viewModel : NSObject</span><br><span class="line"></span><br><span class="line">@property (nonatomic, strong) NSString *name;</span><br><span class="line">@property (nonatomic, strong) NSString *price;</span><br><span class="line">@property (nonatomic, strong) NSString *discount;</span><br><span class="line"></span><br><span class="line">- (id)initWithCustomer:(Customer *)customer iphone:(iPhone *)iphone;</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">//.m文件</span><br><span class="line"></span><br><span class="line">@interface viewModel ()</span><br><span class="line"></span><br><span class="line">@property (nonatomic, strong) iPhone *iphone;</span><br><span class="line">@property (nonatomic, strong) Customer *customer;</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation viewModel</span><br><span class="line"></span><br><span class="line">- (id)initWithCustomer:(Customer *)customer iphone:(iPhone *)iphone</span><br><span class="line">&#123;</span><br><span class="line">    if (self = [super init]) &#123;</span><br><span class="line">        _customer = customer;</span><br><span class="line">        _iphone = iphone;</span><br><span class="line">        [self bindData];</span><br><span class="line">    &#125;</span><br><span class="line">    return self;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)bindData</span><br><span class="line">&#123;</span><br><span class="line">    self.name = _iphone.name;</span><br><span class="line">    self.price = _iphone.price;</span><br><span class="line"></span><br><span class="line">    if (self.customer.customerType == CustomerTypeStudent) &#123;</span><br><span class="line">        self.discount = @&quot;优惠20%&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    else if (self.customer.customerType == CustomerTypeiT) &#123;</span><br><span class="line">        self.discount = @&quot;优惠50%&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        self.discount = @&quot;没有优惠&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">//VC</span><br><span class="line"></span><br><span class="line">@interface ViewController ()</span><br><span class="line"></span><br><span class="line">@property (nonatomic, strong) viewModel *viewModel;</span><br><span class="line"></span><br><span class="line">@property (weak, nonatomic) IBOutlet UILabel *lblName;</span><br><span class="line">@property (weak, nonatomic) IBOutlet UILabel *lblPrice;</span><br><span class="line">@property (weak, nonatomic) IBOutlet UILabel *lblDiscount;</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation ViewController</span><br><span class="line"></span><br><span class="line">- (void)viewDidLoad &#123;</span><br><span class="line">    [super viewDidLoad];</span><br><span class="line">    // Do any additional setup after loading the view, typically from a nib.</span><br><span class="line">    self.title = @&quot;手机优惠&quot;;</span><br><span class="line"></span><br><span class="line">    self.lblName.text = self.viewModel.name;</span><br><span class="line">    self.lblPrice.text = self.viewModel.price;</span><br><span class="line">    self.lblDiscount.text = self.viewModel.discount;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)didReceiveMemoryWarning &#123;</span><br><span class="line">    [super didReceiveMemoryWarning];</span><br><span class="line">    // Dispose of any resources that can be recreated.</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
-<p>看到修改完的代码，你会发现VC里面已经省去了不少的代码。一切都和viewModel进行交流。这里我只是展示一个最简单的数据展示，如果有其他响应事件，是需要viewModel开放方法来进行处理的，并要通知VC处理结果的。</p>
-<p>##关于MVVM的优点：</p>
-<ul>
-<li>方便测试</li>
-</ul>
-<p>在MVC下，Controller基本是无法测试的，里面混杂了个各种逻辑，而且分散在不同的地方。有了MVVM我们就可以测试里面的viewModel，来验证我们的处理结果对不对（Xcode7的测试已经越来越完善了）。</p>
-<ul>
-<li>便于代码的移植</li>
-</ul>
-<p>比如iOS里面有iPhone版本和iPad版本，除了交互展示不一样外，业务逻辑的model是一致的。这样，我们就可以以很小的代价去开发另一个app。</p>
-<ul>
-<li>兼容MVC</li>
-</ul>
-<p>MVVM是MVC的一个升级版，目前的MVC也可以很快的转换到MVVM这个模式。VC可以省去一大部分展示逻辑。</p>
-<p>  注册  登录<br> 添加关注 100 作者  JamesYu 2015.09.12 17:07<br>写了24936字，被424人关注，获得了343个喜欢<br>谈谈MVC和MVVM<br>字数2050 阅读1659 评论2 喜欢27<br>工作到现在，对代码稍微有点认识，if else 会写那么点。今天就和大家谈谈所理解的MVC，以及现在比较流行的MVVM。首先我们应该明白，计算机实现一个功能核心代码就那么点。也许我们经常会听到对于同一个问题，菜鸟的实现的真的就是几行，可是大牛却多出了很多文件。这个是为什么？因为大牛的“经验”比较多。。。这里面最主要的目的就是为了维护和可扩展。在设计模式里面，如果你能遵循单一原则，你的代码就已经很好了。</p>
-<p>MVC<br>做iOS开发，一直被教导一定要按MVC模式开发。可是MVC到底是神马？至少在我工作初也不懂是咋回事！如果网上一搜就是千篇一律的M是数据模型,V是视图，C是控制器。然后巴拉巴拉的讲他们之间是怎么通信的。然并无卵用！iOS的MVC展现形式还是有点特殊的，特别是controller和view紧密在一起，controller还必须负责view的展示。在服务器端，view根据model直接生成HTML，然后直接扔给浏览器去渲染和展示，通过Ajax或者js post告诉服务器controller view的响应事件，controller真的做的只是业务数据的处理，出来的结果其实还是数据，根本没有去做UI相关的事情。也可以说服务器根本就没有view。。但它有个浏览器，帮他管理着view和controller之间的交互。而在我们iOS中，controller可不仅仅只是处理数据了，还负责view的管理以及事件的传递。 MVC本质就是将数据展示和数据进行进行隔离，提高代码的复用性和扩展性。好吧，我也说点并无什么卵用的。</p>
-<p>看看斯坦福老爷爷的一张图：</p>
-<p>这就是我们所认识的MVC。我们可以看到，Controller可以和Model通信，也可以和View进行通信。继续看Controller和Model的关系，绿色的箭头代表Controller可以直接进行对Model进行访问，也就是说Model对于Controller来说就是透明的。但是Model并不知道Controller是谁。如果Model发生了变化，那么就通过Notification和KVO的方式传递给Controller。同样的Controller和View之间也是这种关系，View对Controller来说就是 透明的。Controller可以直接根据Model决定View的展示。View如果接受响应事件则通过delegate，target-action，block等方式告诉Controller的状态变化。Controller进行业务的处理，然后再控制View的展示。</p>
-<p>到这里你会发现Model和View并不能直接的进行通信，都必须通过Controller。那这样Model和View就是相互独立的。View只负责页面的展示，Model只是数据的存储，那么也就达到了解耦和重用的目的。</p>
-<p>说这么多不如几行代码来的实在。我们以一个简单的例子来看下：</p>
-<p>我们假设苹果根据买iPhone的人给予不同的优惠，学生优惠20%，it民工优惠50%，其他不优惠。</p>
-<p>//客户类</p>
-<p>typedef NS_ENUM(NSInteger, CustomerType) {<br>    CustomerTypeStudent,<br>    CustomerTypeiT,<br>    CustomerTypeOther,<br>};</p>
-<p>@interface Customer : NSObject</p>
-<p>@property (nonatomic, assign) CustomerType customerType;</p>
-<p>@end</p>
-<p>//iPhone类</p>
-<p>@interface iPhone : NSObject</p>
-<p>@property (nonatomic, strong) NSString <em>name;<br>@property (nonatomic, strong) NSString </em>price;</p>
-<p>@end</p>
-<p>//VC类</p>
-<p>@interface ViewController ()</p>
-<p>@property (nonatomic, strong) iPhone <em>iphone;<br>@property (nonatomic, strong) Customer </em>customer;</p>
-<p>@property (weak, nonatomic) IBOutlet UILabel <em>lblName;<br>@property (weak, nonatomic) IBOutlet UILabel </em>lblPrice;<br>@property (weak, nonatomic) IBOutlet UILabel *lblDiscount;</p>
-<p>@end</p>
-<p>@implementation ViewController</p>
-<ul>
-<li><p>(void)viewDidLoad {<br>  [super viewDidLoad];</p>
-<p>  self.title = @”手机优惠”;</p>
-<p>  self.lblName.text = self.iphone.name;<br>  self.lblPrice.text = self.iphone.price;</p>
-<p>  if (self.customer.customerType == CustomerTypeStudent) {</p>
-<pre><code>self.lblDiscount.text = @&quot;优惠20%&quot;;
-</code></pre><p>  }<br>  else if (self.customer.customerType == CustomerTypeiT) {</p>
-<pre><code>self.lblDiscount.text = @&quot;优惠50%&quot;;
-</code></pre><p>  }<br>  else {</p>
-<pre><code>self.lblDiscount.text = @&quot;没有优惠&quot;;
-</code></pre><p>  }<br>}</p>
-</li>
-</ul>
-<p>@end<br>这个就是我们最正常的开发，我们的逻辑都是在vc里面写的。这样写有木有错呢？一点没错，controller本来就是用来处理业务的。由于这个例子比较简单，只是做了个优惠判断，所以我们看不出有啥坏处。有点开发经验的都知道，如果业务复杂起来，再加上其他乱七八糟的验证，controller就会变得很大，越来越难以维护。这个也是MVC比较明显的缺点。</p>
-<p>MVVM<br>既然controller越来越臃肿，越来越难以维护，我们怎么去优化和瘦身呢？回头再仔细看看我们所谓的业务逻辑，是干什么的？无非就是根据几个数据得出一个数据用来控制view的显示。比如展示的是什么文案，按钮能不能响应，页面能不能跳转等等。那MVVM就干了这件事，帮忙分担一下controller里面的部分业务逻辑。MVVM更合理的应该叫做MV-CM。</p>
-<p>这个时候，controller将不再直接和真实的model进行绑定了，而通过ViewModel,viewModel进行持有真实的Model。</p>
-<p>我们来看看刚刚那例子怎么修改：</p>
-<p>//新建一个viewModel<br>//.h文件</p>
-<p>@interface viewModel : NSObject</p>
-<p>@property (nonatomic, strong) NSString <em>name;<br>@property (nonatomic, strong) NSString </em>price;<br>@property (nonatomic, strong) NSString *discount;</p>
-<ul>
-<li>(id)initWithCustomer:(Customer <em>)customer iphone:(iPhone </em>)iphone;</li>
-</ul>
-<p>@end</p>
-<p>//.m文件</p>
-<p>@interface viewModel ()</p>
-<p>@property (nonatomic, strong) iPhone <em>iphone;<br>@property (nonatomic, strong) Customer </em>customer;</p>
-<p>@end</p>
-<p>@implementation viewModel</p>
-<ul>
-<li><p>(id)initWithCustomer:(Customer <em>)customer iphone:(iPhone </em>)iphone<br>{<br>  if (self = [super init]) {</p>
-<pre><code>_customer = customer;
-_iphone = iphone;
-[self bindData];
-</code></pre><p>  }<br>  return self;<br>}</p>
-</li>
-<li><p>(void)bindData<br>{<br>  self.name = _iphone.name;<br>  self.price = _iphone.price;</p>
-<p>  if (self.customer.customerType == CustomerTypeStudent) {</p>
-<pre><code>self.discount = @&quot;优惠20%&quot;;
-</code></pre><p>  }<br>  else if (self.customer.customerType == CustomerTypeiT) {</p>
-<pre><code>self.discount = @&quot;优惠50%&quot;;
-</code></pre><p>  }<br>  else {</p>
-<pre><code>self.discount = @&quot;没有优惠&quot;;
-</code></pre><p>  }<br>}</p>
-</li>
-</ul>
-<p>@end</p>
-<p>//VC</p>
-<p>@interface ViewController ()</p>
-<p>@property (nonatomic, strong) viewModel *viewModel;</p>
-<p>@property (weak, nonatomic) IBOutlet UILabel <em>lblName;<br>@property (weak, nonatomic) IBOutlet UILabel </em>lblPrice;<br>@property (weak, nonatomic) IBOutlet UILabel *lblDiscount;</p>
-<p>@end</p>
-<p>@implementation ViewController</p>
-<ul>
-<li><p>(void)viewDidLoad {<br>  [super viewDidLoad];<br>  // Do any additional setup after loading the view, typically from a nib.<br>  self.title = @”手机优惠”;</p>
-<p>  self.lblName.text = self.viewModel.name;<br>  self.lblPrice.text = self.viewModel.price;<br>  self.lblDiscount.text = self.viewModel.discount;</p>
-</li>
-</ul>
-<p>}</p>
-<ul>
-<li>(void)didReceiveMemoryWarning {<br>  [super didReceiveMemoryWarning];<br>  // Dispose of any resources that can be recreated.<br>}</li>
-</ul>
-<p>@end<br>看到修改完的代码，你会发现VC里面已经省去了不少的代码。一切都和viewModel进行交流。这里我只是展示一个最简单的数据展示，如果有其他响应事件，是需要viewModel开放方法来进行处理的，并要通知VC处理结果的。</p>
-<p>关于MVVM的优点：<br>方便测试</p>
-<p>在MVC下，Controller基本是无法测试的，里面混杂了个各种逻辑，而且分散在不同的地方。有了MVVM我们就可以测试里面的viewModel，来验证我们的处理结果对不对（Xcode7的测试已经越来越完善了）。</p>
-<p>便于代码的移植</p>
-<p>比如iOS里面有iPhone版本和iPad版本，除了交互展示不一样外，业务逻辑的model是一致的。这样，我们就可以以很小的代价去开发另一个app。（以前做公司iPad的时候就深深感觉到，全部在VC里面是多么的痛苦和重新开发一个没有啥区别）。</p>
-<p>兼容MVC</p>
-<p>MVVM是MVC的一个升级版，目前的MVC也可以很快的转换到MVVM这个模式。VC可以省去一大部分展示逻辑。</p>
-<p>##缺点：</p>
-<ul>
-<li>类会增多</li>
-</ul>
-<p>每个VC都附带一个viewModel，类的数量*2</p>
-<ul>
-<li>viewModel会越来越庞大</li>
-</ul>
-<p>我们把逻辑给了viewModel，那势必Model也会变得很复杂，里面的属性和方法越来越多。可能重写的方法比较多，因为涉及到一些数据的转换以及和controller之间的通信。</p>
-<ul>
-<li>调用复杂度增加</li>
-</ul>
-<p>由于数据都是从viewModel来，想想突然来了一个新人，一看代码，不知道真实的模型是谁。比如常用tableview的数据源，一般都是一个数组，如果不断的通过viewModel去取，沟通上没有那么直接。况且每封一层，意味着要写很多代码去融合他们的转换。</p>
+        <p>##1 上传至apple developer</p>
+<p>####1.1 上传准备工作</p>
+<p>更新上架和发布上架不同，在原始版本首次上架的时候就将描述文件和证书之类的文档下载好了，所以无需再安装此类文件。 在测试人员确认可以上架以后，首先需要在 Build Settings/Code Signing中将之前真机调试用的developer调试证书换成distribution发布证书，然后在product/scheme/eidt scheme/run中build configuration 的debug改成release，close以后command+b 编译一下，编译成功以后准备上传至apple developer 1.2 上传版本<br>点击product/archive存档，存档需要一点时间，成功后选中最新的版本包点击update to AppStore，然后选择公司的AppleID最后直接upload，开始上传至apple developer 上传需要需要一点时间一般情况下不超过5分钟，上传成功会有提示，最后done就上传OK。 2 提交以供审核<br>来到apple developer官网，选中account/iTunes connect/go to iTunes connect 通过公司账号登录后选中“我的App”，进入构建新版本界面。 点击添加“版本或平台”，在这里面需要构建新版中的所有信息，需要填写的部分有“此版本的新功能”，“App预览和屏幕快照”，“描述”，“关键词”，“技术支持网址(URL)”，“构建版本”（最新上传的版本），“App图标”，“版权”，“商务代表联系信息”，“联系信息”，“审核账户”，选择发布版本方式，完成上述内容以后点击“存储”，最后点击“提交以供审核”，在提交的过程中会弹出来几个问题，根据事实来选择“是”，“否”即可，最近版本就会出现“正在等待审核”的字样状态，说明提交成功。 版本更新审核周期大概需要7个工作日，当审核通过后会显示“可供销售”的字样，表示可以在AppStore中下载此版本了。 如果在审核的过程中发现了正在等待审核的版本存在bug的情况下，可以将bug修改完成后，按照上述过程提交以后，点击“remove this version from review”的字样，将此版本移除，移除后提交新版本，新版本的版本号必须是新的版本号，再次提交。 如果审核没有通过的情况下，苹果公司会将还需要解决的问题通过一个英文邮件的形式发送过来，百度翻译一下解决问题后，再次提交，这种情况下一般只需要一个工作日就可以再次得到审核信息，直至审核通过。 前言：作为一名iOS开发者，把开发出来的App上传到App Store是必须的。下面就来详细介绍下具体流程。</p>
+<p>1.打开苹果开发者中心：<a href="https://developer.apple.com打开后点击：Member" target="_blank" rel="external">https://developer.apple.com打开后点击：Member</a> Center 如果你的电脑没有保存密码，则会提示你输入开发者帐号和密码，因为我的电脑已经保存了，所以直接进入。<br><img src="http://img.blog.csdn.net/20160625142943135" alt="这里写图片描述"></p>
+<p>2.点击：Certificates, Identifiers &amp; Profiles<br><img src="http://img.blog.csdn.net/20160625143009941" alt="这里写图片描述"></p>
+<p>3.点击Devices<br><img src="http://img.blog.csdn.net/20160625143027894" alt="这里写图片描述"></p>
+<p>##一.创建App IDs和Boudle ID<br>4.点击App IDs，会进入如下界面，点击右上角的 + 号<br><img src="http://img.blog.csdn.net/20160625143048074" alt="这里写图片描述"></p>
+<p>5.填写App IDs和Boudle ID<br><img src="http://img.blog.csdn.net/20160625143153613" alt="这里写图片描述"><br>6.点击continue<br><img src="http://img.blog.csdn.net/20160625143245390" alt="这里写图片描述"></p>
+<p>7.点击Submit<br><img src="http://img.blog.csdn.net/20160625143305922" alt="这里写图片描述"></p>
+<p>8.点击Done<br><img src="http://img.blog.csdn.net/20160625143322567" alt="这里写图片描述"></p>
+<p>##二.创建发布证书（若已创建过发布证书，现在用的是p12文件，可直接跳到第21步）<br>9.点击Production后，点击 +<br><img src="http://img.blog.csdn.net/20160625143429787" alt="这里写图片描述"></p>
+<p>10.点击App Store and Ad Hoc<br><img src="http://img.blog.csdn.net/20160625143450022" alt="这里写图片描述"></p>
+<p>11.点击Continue<br><img src="http://img.blog.csdn.net/20160625143504783" alt="这里写图片描述"></p>
+<p>12.点击Continue<br><img src="http://img.blog.csdn.net/20160625143518709" alt="这里写图片描述"></p>
+<p>##三、创建本地证书<br>13.此时返回到桌面，在点开LaunchPad，在其他中找到钥匙串访问，切记不要关闭浏览器<br><img src="http://img.blog.csdn.net/20160625143601007" alt="这里写图片描述"></p>
+<p>14.打开钥匙串访问，点击电脑左上角的钥匙串访问–证书助理–从证书颁发机构请求证书<br><img src="http://img.blog.csdn.net/20160625143622460" alt="这里写图片描述"></p>
+<p>15.会出现如下界面，选择存储到磁盘，点击继续<br><img src="http://img.blog.csdn.net/20160625143637788" alt="这里写图片描述"></p>
+<p>16.选择存储到桌面，存储<br><img src="http://img.blog.csdn.net/20160625143720679" alt="这里写图片描述"></p>
+<p>17.点击完成<br><img src="http://img.blog.csdn.net/20160625143736942" alt="这里写图片描述"></p>
+<p>18.你会在桌面上看到下面的文件<br><img src="http://img.blog.csdn.net/20160625143902772" alt="这里写图片描述"><br>19.然后回到浏览器，点击choose File.. 选择创建好的：CertificateSigningRequest.certSigningRequest 文件，点击Generate<br><img src="http://img.blog.csdn.net/20160625143917179" alt="这里写图片描述"></p>
+<p>20.点击Download下载创建好的发布证书（cer后缀的文件），然后点击Done，你创建的发布证书就会存储在帐号中。<br><img src="http://img.blog.csdn.net/20160625143931758" alt="这里写图片描述"></p>
+<p><code>注：一般一个开发者帐号创建一个发布证书就够了，如果以后需要在其他电脑上上架App，只需要在钥匙串访问中创建p12文件，把p12文件安装到其他电脑上。这相当于给予了其他电脑发布App的权限。 创建PP文件</code></p>
+<p>21.找到Provisioning Profiles ，点击All，然后点击右上角 + 号<br><img src="http://img.blog.csdn.net/20160625144030977" alt="这里写图片描述"></p>
+<p>22.选择App Store，点击Continue<br><img src="http://img.blog.csdn.net/20160625144102790" alt="这里写图片描述"></p>
+<p>23.在App ID 这个选项栏里面找到你刚刚创建的：App IDs（Bundle ID） 类型的套装，点击Continue<br><img src="http://img.blog.csdn.net/20160625144251652" alt="这里写图片描述"></p>
+<p>24.选择你刚创建的发布证书（或者生成p12文件的那个发布证书），点击Continue<br><img src="http://img.blog.csdn.net/20160625144311369" alt="这里写图片描述"></p>
+<p>25.在Profile Name栏里输入一个名字（这个是PP文件的名字，可随便输入，在这里我用工程名字，便于分别），然后点击Generate<br><img src="http://img.blog.csdn.net/20160625144334838" alt="这里写图片描述"></p>
+<p>26.Download生成的PP文件，然后点击Done<br><img src="http://img.blog.csdn.net/20160625144356572" alt="这里写图片描述"></p>
+<p>##四、在App Store开辟空间<br>27.回到Member Center，点击iTunes Connect<br><img src="http://img.blog.csdn.net/20160625144417198" alt="这里写图片描述"></p>
+<p>28.点击我的App<br><img src="http://img.blog.csdn.net/20160625144435310" alt="这里写图片描述"></p>
+<p>29.点击新建 iOSApp<br><img src="http://img.blog.csdn.net/20160625144452061" alt="这里写图片描述"></p>
+<p>30.依次按提示填入对应信息，然后点击创建<br><img src="http://img.blog.csdn.net/20160625144508764" alt="这里写图片描述"></p>
+<p>31.依次把不同尺寸的App截图拉入到对应的里面<br><img src="http://img.blog.csdn.net/20160625144524905" alt="这里写图片描述"></p>
+<p>32.填入App简介<br><img src="http://img.blog.csdn.net/20160625144540328" alt="这里写图片描述"></p>
+<p>33.按提示依次输入<br><img src="http://img.blog.csdn.net/20160625144600058" alt="这里写图片描述"></p>
+<p>34.此时这个构建版本还没有生成，我们先把基本信息填写完毕，然后再进入Xcode中把项目打包发送到过来。 注意：填写完一定要点击右上角的保存。<br><img src="http://img.blog.csdn.net/20160625144619626" alt="这里写图片描述"></p>
+<p>##五、在Xcode中打包工程<br>找到你刚刚下载的发布证书（后缀为.cer）或者p12文件，和PP文件，双击，看起来没反应，但是他们已经加入到你的钥匙串中。<br>35.在Xcode中选择模拟器为iOS Device，按照下图提示操作<br><img src="http://img.blog.csdn.net/20160625144653798" alt="这里写图片描述"><br><img src="http://img.blog.csdn.net/20160625144714408" alt="这里写图片描述"><br><img src="http://img.blog.csdn.net/20160625144729777" alt="这里写图片描述"></p>
+<p>36.修改.plist文件，两个.plist文件都要修改<br><img src="http://img.blog.csdn.net/20160625144747831" alt="这里写图片描述"></p>
+<p>37.然后发送到我的App<br><img src="http://img.blog.csdn.net/20160625144804956" alt="这里写图片描述"></p>
+<p>38.发送成功后返回到我的App，刷新页面，在构建版本处就会有个 + 号，点击 + 号把发送过来的程序添加上去就行了<br>39.然后在定价处设置你的App上架后是免费还是收费。<br>40.回到我的App，点击发布就ok了。</p>
+<p>转载：<a href="http://blog.cocoachina.com/article/17839" target="_blank" rel="external">http://blog.cocoachina.com/article/17839</a></p>
 
         
         
