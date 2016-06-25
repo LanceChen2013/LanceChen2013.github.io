@@ -4,22 +4,37 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>街角的守望</title>
+    <title>MVC与MVVM设计模式理解 | 街角的守望</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="艳遇哥">
     
 
     
-    <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="街角的守望">
-<meta property="og:url" content="https://LanceChen2013.github.io/index.html">
+    <meta name="description" content="##MVC设计模式MVC是一种架构模式，M表示Model，V表示视图View，C表示控制器Controller：
+
+Model负责存储、定义、操作数据；
+View用来展示给用户，并且和用户进行交互；
+Controller是Model和View的协调者，Controller把Model中的数据拿过来给View使用。Controller可以直接与Model和View进行通信，而View不能与Contr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MVC与MVVM设计模式理解">
+<meta property="og:url" content="https://LanceChen2013.github.io/2016/01/04/MVC与MVVM设计模式理解/index.html">
 <meta property="og:site_name" content="街角的守望">
-<meta property="og:description">
+<meta property="og:description" content="##MVC设计模式MVC是一种架构模式，M表示Model，V表示视图View，C表示控制器Controller：
+
+Model负责存储、定义、操作数据；
+View用来展示给用户，并且和用户进行交互；
+Controller是Model和View的协调者，Controller把Model中的数据拿过来给View使用。Controller可以直接与Model和View进行通信，而View不能与Contr">
+<meta property="og:image" content="http://img.blog.csdn.net/20160624224107972">
+<meta property="og:updated_time" content="2016-06-25T14:03:30.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="街角的守望">
-<meta name="twitter:description">
+<meta name="twitter:title" content="MVC与MVVM设计模式理解">
+<meta name="twitter:description" content="##MVC设计模式MVC是一种架构模式，M表示Model，V表示视图View，C表示控制器Controller：
+
+Model负责存储、定义、操作数据；
+View用来展示给用户，并且和用户进行交互；
+Controller是Model和View的协调者，Controller把Model中的数据拿过来给View使用。Controller可以直接与Model和View进行通信，而View不能与Contr">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20160624224107972">
 
     
     <link rel="alternative" href="/atom.xml" title="街角的守望" type="application/atom+xml">
@@ -73,272 +88,10 @@
 </div>
     </header>
     <div id="container">
-      <div id="main">
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2016/06/25/iOS—APP打包上线流程/" title="" itemprop="url"></a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="艳遇哥" target="_blank" itemprop="author">艳遇哥</a>
-		
-  <p class="article-time">
-    <time datetime="2016-06-25T13:51:20.000Z" itemprop="datePublished"> 发表于 2016-06-25</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <hr>
-<p>title: iOS—APP打包上线流程<br>date: 2016-01-04 16:09:07</p>
-<h2 id="tags"><a href="#tags" class="headerlink" title="tags:"></a>tags:</h2><p>##1 上传至apple developer</p>
-<p>####1.1 上传准备工作</p>
-<p>更新上架和发布上架不同，在原始版本首次上架的时候就将描述文件和证书之类的文档下载好了，所以无需再安装此类文件。 在测试人员确认可以上架以后，首先需要在 Build Settings/Code Signing中将之前真机调试用的developer调试证书换成distribution发布证书，然后在product/scheme/eidt scheme/run中build configuration 的debug改成release，close以后command+b 编译一下，编译成功以后准备上传至apple developer 1.2 上传版本<br>点击product/archive存档，存档需要一点时间，成功后选中最新的版本包点击update to AppStore，然后选择公司的AppleID最后直接upload，开始上传至apple developer 上传需要需要一点时间一般情况下不超过5分钟，上传成功会有提示，最后done就上传OK。 2 提交以供审核<br>来到apple developer官网，选中account/iTunes connect/go to iTunes connect 通过公司账号登录后选中“我的App”，进入构建新版本界面。 点击添加“版本或平台”，在这里面需要构建新版中的所有信息，需要填写的部分有“此版本的新功能”，“App预览和屏幕快照”，“描述”，“关键词”，“技术支持网址(URL)”，“构建版本”（最新上传的版本），“App图标”，“版权”，“商务代表联系信息”，“联系信息”，“审核账户”，选择发布版本方式，完成上述内容以后点击“存储”，最后点击“提交以供审核”，在提交的过程中会弹出来几个问题，根据事实来选择“是”，“否”即可，最近版本就会出现“正在等待审核”的字样状态，说明提交成功。 版本更新审核周期大概需要7个工作日，当审核通过后会显示“可供销售”的字样，表示可以在AppStore中下载此版本了。 如果在审核的过程中发现了正在等待审核的版本存在bug的情况下，可以将bug修改完成后，按照上述过程提交以后，点击“remove this version from review”的字样，将此版本移除，移除后提交新版本，新版本的版本号必须是新的版本号，再次提交。 如果审核没有通过的情况下，苹果公司会将还需要解决的问题通过一个英文邮件的形式发送过来，百度翻译一下解决问题后，再次提交，这种情况下一般只需要一个工作日就可以再次得到审核信息，直至审核通过。 前言：作为一名iOS开发者，把开发出来的App上传到App Store是必须的。下面就来详细介绍下具体流程。</p>
-<p>1.打开苹果开发者中心：<a href="https://developer.apple.com打开后点击：Member" target="_blank" rel="external">https://developer.apple.com打开后点击：Member</a> Center 如果你的电脑没有保存密码，则会提示你输入开发者帐号和密码，因为我的电脑已经保存了，所以直接进入。<br><img src="http://img.blog.csdn.net/20160625142943135" alt="这里写图片描述"></p>
-<p>2.点击：Certificates, Identifiers &amp; Profiles<br><img src="http://img.blog.csdn.net/20160625143009941" alt="这里写图片描述"></p>
-<p>3.点击Devices<br><img src="http://img.blog.csdn.net/20160625143027894" alt="这里写图片描述"></p>
-<p>##一.创建App IDs和Boudle ID<br>4.点击App IDs，会进入如下界面，点击右上角的 + 号<br><img src="http://img.blog.csdn.net/20160625143048074" alt="这里写图片描述"></p>
-<p>5.填写App IDs和Boudle ID<br><img src="http://img.blog.csdn.net/20160625143153613" alt="这里写图片描述"><br>6.点击continue<br><img src="http://img.blog.csdn.net/20160625143245390" alt="这里写图片描述"></p>
-<p>7.点击Submit<br><img src="http://img.blog.csdn.net/20160625143305922" alt="这里写图片描述"></p>
-<p>8.点击Done<br><img src="http://img.blog.csdn.net/20160625143322567" alt="这里写图片描述"></p>
-<p>##二.创建发布证书（若已创建过发布证书，现在用的是p12文件，可直接跳到第21步）<br>9.点击Production后，点击 +<br><img src="http://img.blog.csdn.net/20160625143429787" alt="这里写图片描述"></p>
-<p>10.点击App Store and Ad Hoc<br><img src="http://img.blog.csdn.net/20160625143450022" alt="这里写图片描述"></p>
-<p>11.点击Continue<br><img src="http://img.blog.csdn.net/20160625143504783" alt="这里写图片描述"></p>
-<p>12.点击Continue<br><img src="http://img.blog.csdn.net/20160625143518709" alt="这里写图片描述"></p>
-<p>##三、创建本地证书<br>13.此时返回到桌面，在点开LaunchPad，在其他中找到钥匙串访问，切记不要关闭浏览器<br><img src="http://img.blog.csdn.net/20160625143601007" alt="这里写图片描述"></p>
-<p>14.打开钥匙串访问，点击电脑左上角的钥匙串访问–证书助理–从证书颁发机构请求证书<br><img src="http://img.blog.csdn.net/20160625143622460" alt="这里写图片描述"></p>
-<p>15.会出现如下界面，选择存储到磁盘，点击继续<br><img src="http://img.blog.csdn.net/20160625143637788" alt="这里写图片描述"></p>
-<p>16.选择存储到桌面，存储<br><img src="http://img.blog.csdn.net/20160625143720679" alt="这里写图片描述"></p>
-<p>17.点击完成<br><img src="http://img.blog.csdn.net/20160625143736942" alt="这里写图片描述"></p>
-<p>18.你会在桌面上看到下面的文件<br><img src="http://img.blog.csdn.net/20160625143902772" alt="这里写图片描述"><br>19.然后回到浏览器，点击choose File.. 选择创建好的：CertificateSigningRequest.certSigningRequest 文件，点击Generate<br><img src="http://img.blog.csdn.net/20160625143917179" alt="这里写图片描述"></p>
-<p>20.点击Download下载创建好的发布证书（cer后缀的文件），然后点击Done，你创建的发布证书就会存储在帐号中。<br><img src="http://img.blog.csdn.net/20160625143931758" alt="这里写图片描述"></p>
-<p><code>注：一般一个开发者帐号创建一个发布证书就够了，如果以后需要在其他电脑上上架App，只需要在钥匙串访问中创建p12文件，把p12文件安装到其他电脑上。这相当于给予了其他电脑发布App的权限。 创建PP文件</code></p>
-<p>21.找到Provisioning Profiles ，点击All，然后点击右上角 + 号<br><img src="http://img.blog.csdn.net/20160625144030977" alt="这里写图片描述"></p>
-<p>22.选择App Store，点击Continue<br><img src="http://img.blog.csdn.net/20160625144102790" alt="这里写图片描述"></p>
-<p>23.在App ID 这个选项栏里面找到你刚刚创建的：App IDs（Bundle ID） 类型的套装，点击Continue<br><img src="http://img.blog.csdn.net/20160625144251652" alt="这里写图片描述"></p>
-<p>24.选择你刚创建的发布证书（或者生成p12文件的那个发布证书），点击Continue<br><img src="http://img.blog.csdn.net/20160625144311369" alt="这里写图片描述"></p>
-<p>25.在Profile Name栏里输入一个名字（这个是PP文件的名字，可随便输入，在这里我用工程名字，便于分别），然后点击Generate<br><img src="http://img.blog.csdn.net/20160625144334838" alt="这里写图片描述"></p>
-<p>26.Download生成的PP文件，然后点击Done<br><img src="http://img.blog.csdn.net/20160625144356572" alt="这里写图片描述"></p>
-<p>##四、在App Store开辟空间<br>27.回到Member Center，点击iTunes Connect<br><img src="http://img.blog.csdn.net/20160625144417198" alt="这里写图片描述"></p>
-<p>28.点击我的App<br><img src="http://img.blog.csdn.net/20160625144435310" alt="这里写图片描述"></p>
-<p>29.点击新建 iOSApp<br><img src="http://img.blog.csdn.net/20160625144452061" alt="这里写图片描述"></p>
-<p>30.依次按提示填入对应信息，然后点击创建<br><img src="http://img.blog.csdn.net/20160625144508764" alt="这里写图片描述"></p>
-<p>31.依次把不同尺寸的App截图拉入到对应的里面<br><img src="http://img.blog.csdn.net/20160625144524905" alt="这里写图片描述"></p>
-<p>32.填入App简介<br><img src="http://img.blog.csdn.net/20160625144540328" alt="这里写图片描述"></p>
-<p>33.按提示依次输入<br><img src="http://img.blog.csdn.net/20160625144600058" alt="这里写图片描述"></p>
-<p>34.此时这个构建版本还没有生成，我们先把基本信息填写完毕，然后再进入Xcode中把项目打包发送到过来。 注意：填写完一定要点击右上角的保存。<br><img src="http://img.blog.csdn.net/20160625144619626" alt="这里写图片描述"></p>
-<p>##五、在Xcode中打包工程<br>找到你刚刚下载的发布证书（后缀为.cer）或者p12文件，和PP文件，双击，看起来没反应，但是他们已经加入到你的钥匙串中。<br>35.在Xcode中选择模拟器为iOS Device，按照下图提示操作<br><img src="http://img.blog.csdn.net/20160625144653798" alt="这里写图片描述"><br><img src="http://img.blog.csdn.net/20160625144714408" alt="这里写图片描述"><br><img src="http://img.blog.csdn.net/20160625144729777" alt="这里写图片描述"></p>
-<p>36.修改.plist文件，两个.plist文件都要修改<br><img src="http://img.blog.csdn.net/20160625144747831" alt="这里写图片描述"></p>
-<p>37.然后发送到我的App<br><img src="http://img.blog.csdn.net/20160625144804956" alt="这里写图片描述"></p>
-<p>38.发送成功后返回到我的App，刷新页面，在构建版本处就会有个 + 号，点击 + 号把发送过来的程序添加上去就行了<br>39.然后在定价处设置你的App上架后是免费还是收费。<br>40.回到我的App，点击发布就ok了。</p>
-<p>转载：<a href="http://blog.cocoachina.com/article/17839" target="_blank" rel="external">http://blog.cocoachina.com/article/17839</a></p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2016/04/15/UIStackView详解/" title="UIStackView" itemprop="url">UIStackView</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="艳遇哥" target="_blank" itemprop="author">艳遇哥</a>
-		
-  <p class="article-time">
-    <time datetime="2016-04-15T05:16:53.000Z" itemprop="datePublished"> 发表于 2016-04-15</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>本文转自：<a href="http://www.cocoachina.com/ios/20150617/12151.html">iOS 9 新增 UIStackView 官方文档翻译</a></p>
-<p>Demo效果图：<br><img src="http://img.blog.csdn.net/20160415141854946" alt="UIStackView"></p>
-<h3 id="一、继承关系、遵守协议、隶属框架及可用平台"><a href="#一、继承关系、遵守协议、隶属框架及可用平台" class="headerlink" title="一、继承关系、遵守协议、隶属框架及可用平台"></a>一、继承关系、遵守协议、隶属框架及可用平台</h3><p><img src="http://images0.cnblogs.com/blog2015/490613/201506/130105390356699.png" alt="image"><br>先看下官方文档吧：</p>
-<p>`</p>
-<pre><code>The UIStackView class provides a streamlined interface for laying out a collection of views in either a column or a row. Stack views let you leverage the power of Auto Layout, creating user interfaces that can dynamically adapt to the device’s orientation, screen size, and any changes in the available space. The stack view manages the layout of all the views in its arrangedSubviews property. These views are arranged along the stack view’s axis, based on their order in the arrangedSubviews array. The exact layout varies depending on the stack view’s axis, distribution, alignment, spacing, and other properties.`
-</code></pre><p>UIStackView 类提供了一个高效的接口用于平铺一行或一列的视图组合。Stack视图使你依靠自动布局的能力，创建用户接口使得可以动态的调整设备朝向、屏幕尺寸及任何可用范围内的变化。Stack视图管理着所有在它的 arrangedSubviews 属性中的视图的布局。这些视图根据它们在 arrangedSubviews 数组中的顺序沿着 Stack 视图的轴向排列。精确的布局变量根据 Stack 视图的 axis, distribution, alignment, spacing, 和其它属性共同决定。<br>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2016/04/15/UIStackView详解/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2016/04/12/GCD由浅入深学习/" title="GCD由浅入深学习" itemprop="url">GCD由浅入深学习</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="艳遇哥" target="_blank" itemprop="author">艳遇哥</a>
-		
-  <p class="article-time">
-    <time datetime="2016-04-12T02:55:19.000Z" itemprop="datePublished"> 发表于 2016-04-12</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>本文转自<a href="http://www.henishuo.com/gcd-multiple-thread-learn/">[标哥的技术博客]</a>，欢迎转载，转载时请注明出处！</p>
-<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>虽然GCD使用很广，而且在面试时也经常问与GCD相关的问题，但是我相信深入理解关于GCD知识的人肯定不多，大部分都是人云亦云，只是使用过GCD完成一些很简单的功能。当然，使用GCD完成一些简单的功能，通常已经能够满足我们的需求了。不过，笔者比较喜欢刨根问底，因此在这里记录下学习的过程。</p>
-<h2 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h2><p>高手可绕边走！！！</p>
-<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>iOS实现提供实现多线程的方案有：NSThread、NSOperation、GCD。</p>
-<p>在iOS所有实现多线程的方案中，GCD应该是最有魅力的，而且使用起来也是最方便的，因为GCD是苹果公司为多核的并行运算提出的解决方案。</p>
-<p>GCD是Grand Central Dispatch的简称，它是基于C语言的。使用GCD，我们不需要编写线程代码，其生命周期也不需要我们手动管理，定义想要执行的任务,然后添加到适当的调度队列，也就是dispatch queue。GCD会负责创建线程和调度任务，系统直接提供线程管理。</p>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2016/04/12/GCD由浅入深学习/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2016/03/23/iOS面试题/" title="iOS面试题" itemprop="url">iOS面试题</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="艳遇哥" target="_blank" itemprop="author">艳遇哥</a>
-		
-  <p class="article-time">
-    <time datetime="2016-03-23T06:21:17.000Z" itemprop="datePublished"> 发表于 2016-03-23</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p><strong>基础篇</strong></p>
-<p><strong>Objective-C的类可以多重继承么?可以采用多个协议么?</strong></p>
-<p>不可以多重继承,可以采用多个协议.</p>
-<p><strong>objc使用什么机制管理对象内存？</strong></p>
-<p>1、MRC 手动引用计数<br>2、ARC 自动引用计数,现在通常使用自动引用计数</p>
-<p><strong>import 跟#include 又什么区别，@class呢, ＃import&lt;&gt; 跟 #import””又什么区别？</strong></p>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2016/03/23/iOS面试题/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
   <h1 itemprop="name">
     
       <a href="/2016/01/04/MVC与MVVM设计模式理解/" title="MVC与MVVM设计模式理解" itemprop="url">MVC与MVVM设计模式理解</a>
@@ -352,9 +105,16 @@
     
   </p>
 </header>
-    <div class="article-content">
-        
-        <p>##MVC设计模式<br>MVC是一种架构模式，M表示Model，V表示视图View，C表示控制器Controller：</p>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			
+		
+		</div>
+		
+		<p>##MVC设计模式<br>MVC是一种架构模式，M表示Model，V表示视图View，C表示控制器Controller：</p>
 <ul>
 <li>Model负责存储、定义、操作数据；</li>
 <li>View用来展示给用户，并且和用户进行交互；</li>
@@ -482,14 +242,9 @@ _iphone = iphone;
 <li>调用复杂度增加</li>
 </ul>
 <p>由于数据都是从viewModel来，想想突然来了一个新人，一看代码，不知道真实的模型是谁。比如常用tableview的数据源，一般都是一个数组，如果不断的通过viewModel去取，沟通上没有那么直接。况且每封一层，意味着要写很多代码去融合他们的转换。</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
+  
+	</div>
+		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
 
@@ -497,304 +252,51 @@ _iphone = iphone;
 
 
 
-
-<div class="comments-count">
+	<div class="article-share" id="share">
 	
-</div>
+	  <div data-url="https://LanceChen2013.github.io/2016/01/04/MVC与MVVM设计模式理解/" data-title="MVC与MVVM设计模式理解 | 街角的守望" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
 
 </footer>
 
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2016/01/04/键值观察KVO详解/" title="键值观察KVO详解" itemprop="url">键值观察KVO详解</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="艳遇哥" target="_blank" itemprop="author">艳遇哥</a>
-		
-  <p class="article-time">
-    <time datetime="2016-01-04T08:09:07.000Z" itemprop="datePublished"> 发表于 2016-01-04</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p><strong>Introduction to Key-Value Observing Programming Guide</strong></p>
-<p>Key-value observing is a mechanism that allows objects to be notified of changes to specified properties of other objects.</p>
-<p><strong>Important: In order to understand key-value observing, you must first understand key-value coding.</strong></p>
-<p> <strong>一、KVO简介</strong></p>
-<p>KVO 全称 Key-Value Observing。中文叫键值观察。KVO其实是一种观察者模式，观察者在键值改变时会得到通知,利用它可以很容易实现视图组件和数据模型的分离，当数据模型的属性值改变之后作为监听器的视图组件就会被激发，激发时就会回调监听器自身。相比Notification，KVO更加的简单直接。</p>
-<p>KVO的操作方法由NSKeyValueCoding提供，而他是NSObject的类别，也就是说ObjC中几乎所有的对象都支持KVO操作。</p>
-<p><strong>二、运用键值观察</strong><br>KVO的使用就是简单的三步曲:<br>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2016/01/04/键值观察KVO详解/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
+   	       
+	</article>
 	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2015/12/23/iOS开发技巧第一弹-PCH文件配置/" title="iOS开发技巧第一弹:PCH文件配置" itemprop="url">iOS开发技巧第一弹:PCH文件配置</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="艳遇哥" target="_blank" itemprop="author">艳遇哥</a>
-		
-  <p class="article-time">
-    <time datetime="2015-12-22T17:38:12.000Z" itemprop="datePublished"> 发表于 2015-12-23</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p><strong>任何开发过程中，都可能会有所有文件都需要导入的包或者头文件，为了提高开发效率，我们可以配置PCH文件</strong></p>
-<ul>
-<li>XX_Prefix.pch:扩展名.pch表示“precompiled header”</li>
-<li>这是一个你工程里要用到的来自于外部框架的头文件列表。Xcode将编译这些头文件，这将减少你在选择Build和Build and Go时编译项目的时间。通常用到的头文件已经自动包含了pch，系统编译每一个.m文件前，都会先#import这个文件。这样就节省了添加#include的时间，相当于加速编译</li>
-<li>还有就是可以在这个pch文件中放入宏，在整个工程中都可以用</li>
-<li>例如在一个项目中有一个hello.h文件，需要在所有.m文件中都要包含这个文件就可以在XX_Prefix.pch文件中引入hello.h</li>
-</ul>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2015/12/23/iOS开发技巧第一弹-PCH文件配置/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2016/03/23/iOS面试题/" title="iOS面试题">
+  <strong>上一篇：</strong><br/>
+  <span>
+  iOS面试题</span>
+</a>
 </div>
 
 
+<div class="next">
+<a href="/2016/01/04/键值观察KVO详解/"  title="键值观察KVO详解">
+ <strong>下一篇：</strong><br/> 
+ <span>键值观察KVO详解
+</span>
+</a>
+</div>
 
+</nav>
 
-<div class="comments-count">
 	
-</div>
 
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2015/10/12/可视化类/" title="文章标题" itemprop="url">文章标题</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="艳遇哥" target="_blank" itemprop="author">艳遇哥</a>
-		
-  <p class="article-time">
-    <time datetime="2015-10-12T02:36:21.000Z" itemprop="datePublished"> 发表于 2015-10-12</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>由于StoryBoard故事板对Tabbar的tinColor更改无效，因此自定义一个可视化类，方便StoryBoard对Tabbar的开发，提高StoryBoard的开发效率。<br>先看下效果：</p>
-<p><img src="http://img.blog.csdn.net/20160224094356252" alt="storyboard面板"></p>
-<p><img src="http://img.blog.csdn.net/20160224094512037" alt="运行结果"></p>
-<p><img src="http://img.blog.csdn.net/20160224094538835" alt="storyboard所拖拽的Tabbar所属自定义类"></p>
-<p><strong>自定义一个可视化类</strong><br>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2015/10/12/可视化类/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2015/09/16/Git使用教程/" title="Git使用教程" itemprop="url">Git使用教程</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="艳遇哥" target="_blank" itemprop="author">艳遇哥</a>
-		
-  <p class="article-time">
-    <time datetime="2015-09-16T14:12:04.000Z" itemprop="datePublished"> 发表于 2015-09-16</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p><strong>Git使用教程</strong></p>
-<p>Git是一个开源的分布式版本控制系统，用以有效、高速的处理从很小到非常大的项目版本管理。</p>
-<p>安装Git</p>
-<p>1.方法一：<br>安装<strong>homebrew</strong>，然后通过<strong>homebrew</strong>安装Git。</p>
-<p>第一步：在终端输入如下命令安装<strong>homebrew</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</span><br></pre></td></tr></table></figure>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2015/09/16/Git使用教程/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2015/08/26/load和initialize方法详解/" title="load和initialize方法详解" itemprop="url">load和initialize方法详解</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="艳遇哥" target="_blank" itemprop="author">艳遇哥</a>
-		
-  <p class="article-time">
-    <time datetime="2015-08-26T08:21:09.000Z" itemprop="datePublished"> 发表于 2015-08-26</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>本篇文章来详细讲解下NSObject.h中的+(void)load 和 + (void)initialize两个方法。<br><img src="http://img.blog.csdn.net/20160103125931762" alt="这里写图片描述"></p>
-<p>Objective-C作为一门面向对象语言，有类和对象的概念。编译后，类相关的数据结构会保留在目标文件中，在运行时得到解析和使用。在应用程序运行起来的时候，类的信息会有加载和初始化过程。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">+ (void)load;</span><br><span class="line">+ (void)initialize;</span><br></pre></td></tr></table></figure>
-<p>都是以“+”开头的类方法，返回为空。通常情况下，我们在开发过程中可能不必关注这两个方法。如果有需要定制，我们可以在自定义的NSObject子类中给出这两个方法的实现，这样在类的加载和初始化过程中，自定义的方法可以得到调用。</p>
-<p><strong>下面整理下细节:</strong><br>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2015/08/26/load和initialize方法详解/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-
-</div>
+</div>  
       <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ 
+ 
+  </div>
 
 <div id="asidepart">
 <div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
@@ -925,12 +427,89 @@ $(document).ready(function(){
       m.removeClass('moveMain');
       a.css('display', 'block').removeClass('fadeOut');
       o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
         
     }
   });
 });
 </script>
 
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
 
 
 
@@ -1001,4 +580,4 @@ var _hmt = _hmt || [];
 <!-- Tiny_search End -->
 
   </body>
- </html>
+</html>

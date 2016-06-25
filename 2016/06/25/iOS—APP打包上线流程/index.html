@@ -11,18 +11,18 @@
     
 
     
-    <meta name="description" content="#iOS—APP打包上线流程
-##1 上传至apple developer
+    <meta name="description" content="title: iOS—APP打包上线流程date: 2016-01-04 16:09:07
+tags:##1 上传至apple developer
 ####1.1 上传准备工作
-更新上架和发布上架不同，在原始版本首次上架的时候就将描述文件和证书之类的文档下载好了，所以无需再安装此类文件。 在测试人员确认可以上架以后，首先需要在 Build Settings/Code Signing中将之前真机调试用的developer调试证书换成distribution发布证书，然后">
+更新上架和发布上架不同，在原始版本首次上架的时候就将描述文件和证书之类的文档下载好了，所以无需再安装此类文件。 在测试人员确认可以上架以后，首先需要在 Build Settings/Code Signing中将之前真机调">
 <meta property="og:type" content="article">
 <meta property="og:title" content="街角的守望">
 <meta property="og:url" content="https://LanceChen2013.github.io/2016/06/25/iOS—APP打包上线流程/index.html">
 <meta property="og:site_name" content="街角的守望">
-<meta property="og:description" content="#iOS—APP打包上线流程
-##1 上传至apple developer
+<meta property="og:description" content="title: iOS—APP打包上线流程date: 2016-01-04 16:09:07
+tags:##1 上传至apple developer
 ####1.1 上传准备工作
-更新上架和发布上架不同，在原始版本首次上架的时候就将描述文件和证书之类的文档下载好了，所以无需再安装此类文件。 在测试人员确认可以上架以后，首先需要在 Build Settings/Code Signing中将之前真机调试用的developer调试证书换成distribution发布证书，然后">
+更新上架和发布上架不同，在原始版本首次上架的时候就将描述文件和证书之类的文档下载好了，所以无需再安装此类文件。 在测试人员确认可以上架以后，首先需要在 Build Settings/Code Signing中将之前真机调">
 <meta property="og:image" content="http://img.blog.csdn.net/20160625142943135">
 <meta property="og:image" content="http://img.blog.csdn.net/20160625143009941">
 <meta property="og:image" content="http://img.blog.csdn.net/20160625143027894">
@@ -62,13 +62,13 @@
 <meta property="og:image" content="http://img.blog.csdn.net/20160625144729777">
 <meta property="og:image" content="http://img.blog.csdn.net/20160625144747831">
 <meta property="og:image" content="http://img.blog.csdn.net/20160625144804956">
-<meta property="og:updated_time" content="2016-06-25T13:51:20.000Z">
+<meta property="og:updated_time" content="2016-06-25T14:03:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="街角的守望">
-<meta name="twitter:description" content="#iOS—APP打包上线流程
-##1 上传至apple developer
+<meta name="twitter:description" content="title: iOS—APP打包上线流程date: 2016-01-04 16:09:07
+tags:##1 上传至apple developer
 ####1.1 上传准备工作
-更新上架和发布上架不同，在原始版本首次上架的时候就将描述文件和证书之类的文档下载好了，所以无需再安装此类文件。 在测试人员确认可以上架以后，首先需要在 Build Settings/Code Signing中将之前真机调试用的developer调试证书换成distribution发布证书，然后">
+更新上架和发布上架不同，在原始版本首次上架的时候就将描述文件和证书之类的文档下载好了，所以无需再安装此类文件。 在测试人员确认可以上架以后，首先需要在 Build Settings/Code Signing中将之前真机调">
 <meta name="twitter:image" content="http://img.blog.csdn.net/20160625142943135">
 
     
@@ -145,12 +145,13 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#tags"><span class="toc-number">1.</span> <span class="toc-text">tags:</span></a></li></ol>
 		
 		</div>
 		
-		<p>#iOS—APP打包上线流程</p>
-<p>##1 上传至apple developer</p>
+		<hr>
+<p>title: iOS—APP打包上线流程<br>date: 2016-01-04 16:09:07</p>
+<h2 id="tags"><a href="#tags" class="headerlink" title="tags:"></a>tags:</h2><p>##1 上传至apple developer</p>
 <p>####1.1 上传准备工作</p>
 <p>更新上架和发布上架不同，在原始版本首次上架的时候就将描述文件和证书之类的文档下载好了，所以无需再安装此类文件。 在测试人员确认可以上架以后，首先需要在 Build Settings/Code Signing中将之前真机调试用的developer调试证书换成distribution发布证书，然后在product/scheme/eidt scheme/run中build configuration 的debug改成release，close以后command+b 编译一下，编译成功以后准备上传至apple developer 1.2 上传版本<br>点击product/archive存档，存档需要一点时间，成功后选中最新的版本包点击update to AppStore，然后选择公司的AppleID最后直接upload，开始上传至apple developer 上传需要需要一点时间一般情况下不超过5分钟，上传成功会有提示，最后done就上传OK。 2 提交以供审核<br>来到apple developer官网，选中account/iTunes connect/go to iTunes connect 通过公司账号登录后选中“我的App”，进入构建新版本界面。 点击添加“版本或平台”，在这里面需要构建新版中的所有信息，需要填写的部分有“此版本的新功能”，“App预览和屏幕快照”，“描述”，“关键词”，“技术支持网址(URL)”，“构建版本”（最新上传的版本），“App图标”，“版权”，“商务代表联系信息”，“联系信息”，“审核账户”，选择发布版本方式，完成上述内容以后点击“存储”，最后点击“提交以供审核”，在提交的过程中会弹出来几个问题，根据事实来选择“是”，“否”即可，最近版本就会出现“正在等待审核”的字样状态，说明提交成功。 版本更新审核周期大概需要7个工作日，当审核通过后会显示“可供销售”的字样，表示可以在AppStore中下载此版本了。 如果在审核的过程中发现了正在等待审核的版本存在bug的情况下，可以将bug修改完成后，按照上述过程提交以后，点击“remove this version from review”的字样，将此版本移除，移除后提交新版本，新版本的版本号必须是新的版本号，再次提交。 如果审核没有通过的情况下，苹果公司会将还需要解决的问题通过一个英文邮件的形式发送过来，百度翻译一下解决问题后，再次提交，这种情况下一般只需要一个工作日就可以再次得到审核信息，直至审核通过。 前言：作为一名iOS开发者，把开发出来的App上传到App Store是必须的。下面就来详细介绍下具体流程。</p>
 <p>1.打开苹果开发者中心：<a href="https://developer.apple.com打开后点击：Member" target="_blank" rel="external">https://developer.apple.com打开后点击：Member</a> Center 如果你的电脑没有保存密码，则会提示你输入开发者帐号和密码，因为我的电脑已经保存了，所以直接进入。<br><img src="http://img.blog.csdn.net/20160625142943135" alt="这里写图片描述"></p>
@@ -218,9 +219,9 @@
  
 
 <div class="next">
-<a href="/2016/06/25/MVC与MVVM设计模式理解/"  title="">
+<a href="/2016/04/15/UIStackView详解/"  title="UIStackView">
  <strong>下一篇：</strong><br/> 
- <span>(no title)
+ <span>UIStackView
 </span>
 </a>
 </div>
@@ -235,7 +236,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#tags"><span class="toc-number">1.</span> <span class="toc-text">tags:</span></a></li></ol>
  
   </div>
 
