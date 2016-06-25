@@ -4,50 +4,66 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>寂静喜欢</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    <title>街角的守望</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="艳遇哥">
     
+
     
+    <meta name="description">
+<meta property="og:type" content="website">
+<meta property="og:title" content="街角的守望">
+<meta property="og:url" content="https://LanceChen2013.github.io/index.html">
+<meta property="og:site_name" content="街角的守望">
+<meta property="og:description">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="街角的守望">
+<meta name="twitter:description">
+
     
+    <link rel="alternative" href="/atom.xml" title="街角的守望" type="application/atom+xml">
     
     
     <link rel="icon" href="/img/favicon.ico">
     
     
-    <link rel="apple-touch-icon" href="/img/pacman.jpg">
-    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
     
     <link rel="stylesheet" href="/css/style.css">
 </head>
 
   <body>
     <header>
-      <div>
+      
+<div>
 		
 			<div id="imglogo">
-				<a href="/"><img src="/img/logo.svg" alt="寂静喜欢" title="寂静喜欢"/></a>
+				<a href="/"><img src="/img/logo.png" alt="街角的守望" title="街角的守望"/></a>
 			</div>
 			
 			<div id="textlogo">
-				<h1 class="site-name"><a href="/" title="寂静喜欢">寂静喜欢</a></h1>
-				<h2 class="blog-motto">人生就像是一场旅行，不必在乎目的地，重要的是沿途的风景以及看风景的心情！既然选择了远方，便只顾风雨兼程！</h2>
+				<h1 class="site-name"><a href="/" title="街角的守望">街角的守望</a></h1>
+				<h2 class="blog-motto">人生就像是一场旅行，不必在乎目的地，重要的是沿途的风景以及看风景的&gt;心情！既然选择了远方，便只顾风雨兼程!</h2>
 			</div>
 			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
 			</a></div>
 			<nav class="animated">
 				<ul>
-					
+					<ul>
+					 
 						<li><a href="/">Home</a></li>
 					
 						<li><a href="/archives">Archives</a></li>
 					
-					<li>
+						<li><a href="/about">About</a></li>
 					
+					<li>
+ 					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
 						<input type="hidden" name="q" value="site:LanceChen2013.github.io">
 					</form>
 					
@@ -55,146 +71,457 @@
 				</ul>
 			</nav>			
 </div>
-
     </header>
     <div id="container">
       <div id="main">
 
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2016/04/15/UIStackView详解/" title="UIStackView" itemprop="url">
-  
-    <h1 itemprop="name">UIStackView</h1>
+   
     
-     
-       <p itemprop="description" >本文转自：iOS 9 新增 UIStackView 官方文档翻译
-Demo效果图：
-一、继承关系、遵守协议、隶属框架及可用平台先看下官方文档吧：
-`
-The UIStackView class provides a streamlined interface for laying</p>
-      
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
     
-    <time datetime="2016-04-15T05:16:53.000Z" itemprop="datePublished">2016-04-15</time>
-  </a>
-</section>
+      <a href="/2016/04/15/UIStackView详解/" title="UIStackView" itemprop="url">UIStackView</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="艳遇哥" target="_blank" itemprop="author">艳遇哥</a>
+		
+  <p class="article-time">
+    <time datetime="2016-04-15T05:16:53.000Z" itemprop="datePublished"> 发表于 2016-04-15</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>本文转自：<a href="http://www.cocoachina.com/ios/20150617/12151.html">iOS 9 新增 UIStackView 官方文档翻译</a></p>
+<p>Demo效果图：<br><img src="http://img.blog.csdn.net/20160415141854946" alt="UIStackView"></p>
+<h3 id="一、继承关系、遵守协议、隶属框架及可用平台"><a href="#一、继承关系、遵守协议、隶属框架及可用平台" class="headerlink" title="一、继承关系、遵守协议、隶属框架及可用平台"></a>一、继承关系、遵守协议、隶属框架及可用平台</h3><p><img src="http://images0.cnblogs.com/blog2015/490613/201506/130105390356699.png" alt="image"><br>先看下官方文档吧：</p>
+<p>`</p>
+<pre><code>The UIStackView class provides a streamlined interface for laying out a collection of views in either a column or a row. Stack views let you leverage the power of Auto Layout, creating user interfaces that can dynamically adapt to the device’s orientation, screen size, and any changes in the available space. The stack view manages the layout of all the views in its arrangedSubviews property. These views are arranged along the stack view’s axis, based on their order in the arrangedSubviews array. The exact layout varies depending on the stack view’s axis, distribution, alignment, spacing, and other properties.`
+</code></pre><p>UIStackView 类提供了一个高效的接口用于平铺一行或一列的视图组合。Stack视图使你依靠自动布局的能力，创建用户接口使得可以动态的调整设备朝向、屏幕尺寸及任何可用范围内的变化。Stack视图管理着所有在它的 arrangedSubviews 属性中的视图的布局。这些视图根据它们在 arrangedSubviews 数组中的顺序沿着 Stack 视图的轴向排列。精确的布局变量根据 Stack 视图的 axis, distribution, alignment, spacing, 和其它属性共同决定。<br>
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2016/04/15/UIStackView详解/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
 
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2016/04/12/GCD由浅入深学习/" title="GCD由浅入深学习" itemprop="url">
-  
-    <h1 itemprop="name">GCD由浅入深学习</h1>
-    
-     
-       <p itemprop="description" >本文转自[标哥的技术博客]，欢迎转载，转载时请注明出处！
-引言虽然GCD使用很广，而且在面试时也经常问与GCD相关的问题，但是我相信深入理解关于GCD知识的人肯定不多，大部分都是人云亦云，只是使用过GCD完成一些很简单的功能。当然，使用GCD完成一些简单的功能，通常已经能够满足我</p>
-      
-    
-    <time datetime="2016-04-12T02:55:19.000Z" itemprop="datePublished">2016-04-12</time>
-  </a>
-</section>
 
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2016/03/23/iOS面试题/" title="iOS面试题" itemprop="url">
-  
-    <h1 itemprop="name">iOS面试题</h1>
-    
-     
-       <p itemprop="description" >基础篇
-Objective-C的类可以多重继承么?可以采用多个协议么?
-不可以多重继承,可以采用多个协议.
-objc使用什么机制管理对象内存？
-1、MRC 手动引用计数2、ARC 自动引用计数,现在通常使用自动引用计数
-import 跟#include 又什么区别，@class呢</p>
-      
-    
-    <time datetime="2016-03-23T06:21:17.000Z" itemprop="datePublished">2016-03-23</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2016/01/04/键值观察KVO详解/" title="键值观察KVO详解" itemprop="url">
-  
-    <h1 itemprop="name">键值观察KVO详解</h1>
-    
-     
-       <p itemprop="description" >Introduction to Key-Value Observing Programming Guide
-Key-value observing is a mechanism that allows objects to be notified of changes to sp</p>
-      
-    
-    <time datetime="2016-01-04T08:09:07.000Z" itemprop="datePublished">2016-01-04</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2015/12/23/iOS开发技巧第一弹-PCH文件配置/" title="iOS开发技巧第一弹:PCH文件配置" itemprop="url">
-  
-    <h1 itemprop="name">iOS开发技巧第一弹:PCH文件配置</h1>
-    
-     
-       <p itemprop="description" >任何开发过程中，都可能会有所有文件都需要导入的包或者头文件，为了提高开发效率，我们可以配置PCH文件
-
-XX_Prefix.pch:扩展名.pch表示“precompiled header”
-这是一个你工程里要用到的来自于外部框架的头文件列表。Xcode将编译这些头文件，这将减少</p>
-      
-    
-    <time datetime="2015-12-22T17:38:12.000Z" itemprop="datePublished">2015-12-23</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2015/10/12/可视化类/" title="文章标题" itemprop="url">
-  
-    <h1 itemprop="name">文章标题</h1>
-    
-     
-       <p itemprop="description" >由于StoryBoard故事板对Tabbar的tinColor更改无效，因此自定义一个可视化类，方便StoryBoard对Tabbar的开发，提高StoryBoard的开发效率。先看下效果：
+</div>
 
 
 
-自定义一个可视化类</p>
-      
-    
-    <time datetime="2015-10-12T02:36:21.000Z" itemprop="datePublished">2015-10-12</time>
-  </a>
-</section>
 
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2015/09/16/Git使用教程/" title="Git使用教程" itemprop="url">
-  
-    <h1 itemprop="name">Git使用教程</h1>
-    
-     
-       <p itemprop="description" >Git使用教程
-Git是一个开源的分布式版本控制系统，用以有效、高速的处理从很小到非常大的项目版本管理。
-安装Git
-1.方法一：安装homebrew，然后通过homebrew安装Git。
-第一步：在终端输入如下命令安装homebrew
-1ruby -e &amp;quot;$(curl</p>
-      
-    
-    <time datetime="2015-09-16T14:12:04.000Z" itemprop="datePublished">2015-09-16</time>
-  </a>
-</section>
+<div class="comments-count">
+	
+</div>
 
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2015/08/26/load和initialize方法详解/" title="load和initialize方法详解" itemprop="url">
-  
-    <h1 itemprop="name">load和initialize方法详解</h1>
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
     
-     
-       <p itemprop="description" >本篇文章来详细讲解下NSObject.h中的+(void)load 和 + (void)initialize两个方法。
-Objective-C作为一门面向对象语言，有类和对象的概念。编译后，类相关的数据结构会保留在目标文件中，在运行时得到解析和使用。在应用程序运行起来的时候，类的</p>
-      
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
     
-    <time datetime="2015-08-26T08:21:09.000Z" itemprop="datePublished">2015-08-26</time>
-  </a>
-</section>
+      <a href="/2016/04/12/GCD由浅入深学习/" title="GCD由浅入深学习" itemprop="url">GCD由浅入深学习</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="艳遇哥" target="_blank" itemprop="author">艳遇哥</a>
+		
+  <p class="article-time">
+    <time datetime="2016-04-12T02:55:19.000Z" itemprop="datePublished"> 发表于 2016-04-12</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>本文转自<a href="http://www.henishuo.com/gcd-multiple-thread-learn/">[标哥的技术博客]</a>，欢迎转载，转载时请注明出处！</p>
+<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>虽然GCD使用很广，而且在面试时也经常问与GCD相关的问题，但是我相信深入理解关于GCD知识的人肯定不多，大部分都是人云亦云，只是使用过GCD完成一些很简单的功能。当然，使用GCD完成一些简单的功能，通常已经能够满足我们的需求了。不过，笔者比较喜欢刨根问底，因此在这里记录下学习的过程。</p>
+<h2 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h2><p>高手可绕边走！！！</p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>iOS实现提供实现多线程的方案有：NSThread、NSOperation、GCD。</p>
+<p>在iOS所有实现多线程的方案中，GCD应该是最有魅力的，而且使用起来也是最方便的，因为GCD是苹果公司为多核的并行运算提出的解决方案。</p>
+<p>GCD是Grand Central Dispatch的简称，它是基于C语言的。使用GCD，我们不需要编写线程代码，其生命周期也不需要我们手动管理，定义想要执行的任务,然后添加到适当的调度队列，也就是dispatch queue。GCD会负责创建线程和调度任务，系统直接提供线程管理。</p>
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2016/04/12/GCD由浅入深学习/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/03/23/iOS面试题/" title="iOS面试题" itemprop="url">iOS面试题</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="艳遇哥" target="_blank" itemprop="author">艳遇哥</a>
+		
+  <p class="article-time">
+    <time datetime="2016-03-23T06:21:17.000Z" itemprop="datePublished"> 发表于 2016-03-23</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p><strong>基础篇</strong></p>
+<p><strong>Objective-C的类可以多重继承么?可以采用多个协议么?</strong></p>
+<p>不可以多重继承,可以采用多个协议.</p>
+<p><strong>objc使用什么机制管理对象内存？</strong></p>
+<p>1、MRC 手动引用计数<br>2、ARC 自动引用计数,现在通常使用自动引用计数</p>
+<p><strong>import 跟#include 又什么区别，@class呢, ＃import&lt;&gt; 跟 #import””又什么区别？</strong></p>
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2016/03/23/iOS面试题/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/01/04/键值观察KVO详解/" title="键值观察KVO详解" itemprop="url">键值观察KVO详解</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="艳遇哥" target="_blank" itemprop="author">艳遇哥</a>
+		
+  <p class="article-time">
+    <time datetime="2016-01-04T08:09:07.000Z" itemprop="datePublished"> 发表于 2016-01-04</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p><strong>Introduction to Key-Value Observing Programming Guide</strong></p>
+<p>Key-value observing is a mechanism that allows objects to be notified of changes to specified properties of other objects.</p>
+<p><strong>Important: In order to understand key-value observing, you must first understand key-value coding.</strong></p>
+<p> <strong>一、KVO简介</strong></p>
+<p>KVO 全称 Key-Value Observing。中文叫键值观察。KVO其实是一种观察者模式，观察者在键值改变时会得到通知,利用它可以很容易实现视图组件和数据模型的分离，当数据模型的属性值改变之后作为监听器的视图组件就会被激发，激发时就会回调监听器自身。相比Notification，KVO更加的简单直接。</p>
+<p>KVO的操作方法由NSKeyValueCoding提供，而他是NSObject的类别，也就是说ObjC中几乎所有的对象都支持KVO操作。</p>
+<p><strong>二、运用键值观察</strong><br>KVO的使用就是简单的三步曲:<br>
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2016/01/04/键值观察KVO详解/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/12/23/iOS开发技巧第一弹-PCH文件配置/" title="iOS开发技巧第一弹:PCH文件配置" itemprop="url">iOS开发技巧第一弹:PCH文件配置</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="艳遇哥" target="_blank" itemprop="author">艳遇哥</a>
+		
+  <p class="article-time">
+    <time datetime="2015-12-22T17:38:12.000Z" itemprop="datePublished"> 发表于 2015-12-23</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p><strong>任何开发过程中，都可能会有所有文件都需要导入的包或者头文件，为了提高开发效率，我们可以配置PCH文件</strong></p>
+<ul>
+<li>XX_Prefix.pch:扩展名.pch表示“precompiled header”</li>
+<li>这是一个你工程里要用到的来自于外部框架的头文件列表。Xcode将编译这些头文件，这将减少你在选择Build和Build and Go时编译项目的时间。通常用到的头文件已经自动包含了pch，系统编译每一个.m文件前，都会先#import这个文件。这样就节省了添加#include的时间，相当于加速编译</li>
+<li>还有就是可以在这个pch文件中放入宏，在整个工程中都可以用</li>
+<li>例如在一个项目中有一个hello.h文件，需要在所有.m文件中都要包含这个文件就可以在XX_Prefix.pch文件中引入hello.h</li>
+</ul>
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2015/12/23/iOS开发技巧第一弹-PCH文件配置/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/10/12/可视化类/" title="文章标题" itemprop="url">文章标题</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="艳遇哥" target="_blank" itemprop="author">艳遇哥</a>
+		
+  <p class="article-time">
+    <time datetime="2015-10-12T02:36:21.000Z" itemprop="datePublished"> 发表于 2015-10-12</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>由于StoryBoard故事板对Tabbar的tinColor更改无效，因此自定义一个可视化类，方便StoryBoard对Tabbar的开发，提高StoryBoard的开发效率。<br>先看下效果：</p>
+<p><img src="http://img.blog.csdn.net/20160224094356252" alt="storyboard面板"></p>
+<p><img src="http://img.blog.csdn.net/20160224094512037" alt="运行结果"></p>
+<p><img src="http://img.blog.csdn.net/20160224094538835" alt="storyboard所拖拽的Tabbar所属自定义类"></p>
+<p><strong>自定义一个可视化类</strong><br>
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2015/10/12/可视化类/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/09/16/Git使用教程/" title="Git使用教程" itemprop="url">Git使用教程</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="艳遇哥" target="_blank" itemprop="author">艳遇哥</a>
+		
+  <p class="article-time">
+    <time datetime="2015-09-16T14:12:04.000Z" itemprop="datePublished"> 发表于 2015-09-16</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p><strong>Git使用教程</strong></p>
+<p>Git是一个开源的分布式版本控制系统，用以有效、高速的处理从很小到非常大的项目版本管理。</p>
+<p>安装Git</p>
+<p>1.方法一：<br>安装<strong>homebrew</strong>，然后通过<strong>homebrew</strong>安装Git。</p>
+<p>第一步：在终端输入如下命令安装<strong>homebrew</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</span><br></pre></td></tr></table></figure>
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2015/09/16/Git使用教程/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/08/26/load和initialize方法详解/" title="load和initialize方法详解" itemprop="url">load和initialize方法详解</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="艳遇哥" target="_blank" itemprop="author">艳遇哥</a>
+		
+  <p class="article-time">
+    <time datetime="2015-08-26T08:21:09.000Z" itemprop="datePublished"> 发表于 2015-08-26</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>本篇文章来详细讲解下NSObject.h中的+(void)load 和 + (void)initialize两个方法。<br><img src="http://img.blog.csdn.net/20160103125931762" alt="这里写图片描述"></p>
+<p>Objective-C作为一门面向对象语言，有类和对象的概念。编译后，类相关的数据结构会保留在目标文件中，在运行时得到解析和使用。在应用程序运行起来的时候，类的信息会有加载和初始化过程。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">+ (void)load;</span><br><span class="line">+ (void)initialize;</span><br></pre></td></tr></table></figure>
+<p>都是以“+”开头的类方法，返回为空。通常情况下，我们在开发过程中可能不必关注这两个方法。如果有需要定制，我们可以在自定义的NSObject子类中给出这两个方法的实现，这样在类的加载和初始化过程中，自定义的方法可以得到调用。</p>
+<p><strong>下面整理下细节:</strong><br>
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2015/08/26/load和initialize方法详解/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
 
 
 </div>
@@ -206,11 +533,42 @@ Objective-C作为一门面向对象语言，有类和对象的概念。编译后
 
   
 
+
   
 
-  <div class="rsspart">
-	<a href="null" target="_blank" title="rss">RSS 订阅</a>
+  
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
 </div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
 
 </aside>
 </div>
@@ -223,21 +581,42 @@ Objective-C作为一门面向对象语言，有类和对象的概念。编译后
 	</div>
 	
 	
-	<div class="social-font clearfix">
+	<section class="info">
+		<p> Hello ,I&#39;m Larry Page in Google. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
 		
 		
 		
 		
 		
 	</div>
-		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2016 
+			
 		
-		<a href="https://LanceChen2013.github.io" target="_blank" title="艳遇哥">艳遇哥</a>
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="艳遇哥">艳遇哥</a>
+		
 		
 		</p>
 </div>
 </footer>
-    <script src="/js/jquery-2.1.0.min.js"></script>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
 <script type="text/javascript">
 $(document).ready(function(){ 
   $('.navbar').click(function(){
@@ -255,18 +634,6 @@ $(document).ready(function(){
       a = $('#asidepart'),
       c = $('.closeaside'),
       o = $('.openaside');
-  $(window).resize(function(){
-    getSize(); 
-    if (myWidth >= 1024) {
-      $('header nav').removeClass('shownav');
-    }else
-    {
-      m.removeClass('moveMain');
-      a.css('display', 'block').removeClass('fadeOut');
-      o.css('display', 'none');
-        
-    }
-  });
   c.click(function(){
     a.addClass('fadeOut').css('display', 'none');
     o.css('display', 'block').addClass('fadeIn');
@@ -280,6 +647,18 @@ $(document).ready(function(){
   $(window).scroll(function(){
     o.css("top",Math.max(80,260-$(this).scrollTop()));
   });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
 });
 </script>
 
@@ -288,6 +667,69 @@ $(document).ready(function(){
 
 
 
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
 
   </body>
  </html>
